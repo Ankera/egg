@@ -8,6 +8,9 @@ module.exports = app => {
   router.get('/', controller.home.index);
 
   // 后台路由
+  router.get('/admin/login', controller.admin.login.index);
+  router.get('/admin/doLogin', controller.admin.login.doLogin);
+
   router.get('/admin/manager', controller.admin.manager.index);
   router.get('/admin/manager/add', controller.admin.manager.add);
   router.get('/admin/manager/edit', controller.admin.manager.edit);

@@ -30,6 +30,14 @@ module.exports = appInfo => {
         }
     }
 
+    config.session = {
+        key: 'SESSION_ID',
+        maxAge: 864000, // 1 天
+        httpOnly: true,
+        encrypt: true,
+        renew: true // 延长会话期
+    }
+
     return {
         ...config,
         ...userConfig,
