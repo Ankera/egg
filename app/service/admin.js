@@ -10,7 +10,7 @@ class AdminService extends Service {
         return result;
     }
 
-    async update(id, data){
+    async update(data, id){
         let result = await this.app.mysql.update(TABLENAME.ADMIN, data, {
             where: {
                 id
