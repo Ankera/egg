@@ -16,6 +16,14 @@ class BaseController extends Controller {
             redirectUrl
         });
     }
+
+    async verify(){
+        let ctx = this.ctx;
+        let captcha = await ctx.service.tools.captcha();
+
+        ctx.response.type = 'image/svg+xml';
+        ctx.body = captcha.data;
+    }
 }
 
 module.exports = BaseController;
