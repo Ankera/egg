@@ -9,7 +9,8 @@ module.exports = app => {
 
   // 后台路由
   router.get('/admin/login', controller.admin.login.index);
-  router.get('/admin/doLogin', controller.admin.login.doLogin);
+  router.post('/admin/doLogin', controller.admin.login.doLogin);
+  router.get('/admin/loginOut', controller.admin.login.loginOut);
 
   // 登陆&注册时的验证码
   router.get('/admin/verify', controller.admin.base.verify);

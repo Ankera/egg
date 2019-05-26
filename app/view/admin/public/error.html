@@ -1,29 +1,23 @@
-<%- include ../public/page_header.html %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="index.description">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>操作失败</title>
+    <meta http-equiv="refresh" content="3;url=<%=redirectUrl%>"> 
+</head>
+<body>
+<!--The content below is only a placeholder and can be replaced.-->
 
-<meta http-equiv="refresh" content="3;url=<%=redirectUrl%>"> 
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-2">
-            <%- include ../public/page_aside.html %>        		
-          
+    <link rel="stylesheet" href="/public/admin/bootstrap/css/bootstrap.css">
+	<div class="container" style="margin-top: 100px;width: 600px;">
+        <div class="alert alert-danger">
+            <h2><%=message%></h2>
+            <br />
+            <p>如果您不做出选择，将在 3秒后跳转到第一个链接地址。</p>
         </div>
-        <div class="col-sm-10">
-          
-            <div class="alert alert-danger">
-            	
-            	<h2>操作失败!</h2>
-            	
-            	<br />
-            		
-            	<p>如果您不做出选择，将在 3秒后跳转到第一个链接地址。</p>
-            
-            
-            </div>
-
-        </div>
-    </div>
-</div>
-
+	</div>
 </body>
 </html>

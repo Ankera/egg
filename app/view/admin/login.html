@@ -11,9 +11,8 @@
 	<body>
 		<div class="container">
             <div id="login">
-                <form action="#" method="post" id="myform">
-                    <input type="hidden" name="ajaxlogin" id="ajaxlogin">
-                    <input type="hidden" name="ajaxcode" id="ajaxcode">
+                <form action="/admin/doLogin" method="post" id="myform">
+                    <input type="hidden" name="_csrf" value="<%-csrf%>">
                     <div class="l_title">通用型后台管理系统-用户登录</div>
                     <dl>
                         <dd>管理员姓名：<input class="text" type="text" name="username" id="username"></dd>
