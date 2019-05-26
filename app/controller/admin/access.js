@@ -4,15 +4,15 @@ const Controller = require('egg').Controller;
 
 class AccessController extends Controller {
     async index() {
-        this.ctx.body = "access ";
+        await this.ctx.render('admin/access/index.html');
     }
 
     async add(){
-        this.ctx.body = "add access";
+        await this.ctx.render('admin/access/add.html');
     }
 
     async edit(){
-        this.ctx.body = "edit";
+        await this.ctx.render('admin/access/edit.html');
     }
 
     async delete(){

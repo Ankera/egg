@@ -4,15 +4,16 @@ const Controller = require('egg').Controller;
 
 class ManagerController extends Controller {
     async index() {
-        this.ctx.body = "list";
+        
+        await this.ctx.render('admin/manager/index.html');
     }
 
     async add(){
-        this.ctx.body = "add";
+        await this.ctx.render('admin/manager/add.html');
     }
 
     async edit(){
-        this.ctx.body = "edit";
+        await this.ctx.render('admin/manager/edit.html');
     }
 }
 
