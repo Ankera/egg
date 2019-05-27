@@ -60,6 +60,7 @@ class AdminService extends Service {
         pageSize = await ctx.service.common.returnPageSize(pageSize);
 
         let _sql = `SELECT
+            a.id,
             a.username,
             a.mobile,
             a.email,
@@ -73,6 +74,15 @@ class AdminService extends Service {
             LEFT JOIN ${TABLENAME.ROLE} AS r ON r.id = a.role_id 
             LIMIT ${(page - 1) * pageSize}, ${pageSize}`;
         let result = await this.app.mysql.query(_sql);
+        return result;
+    }
+
+    async getInformationById(id){
+        let result = await this.app.mysql.select(TABLENAME.ADMIN, {
+            where: {
+                id
+            }
+        });
         return result;
     }
 }
