@@ -24,7 +24,7 @@
 
                                             <%for(var i=0;i<roleResult.length;i++){%>
                                                 <!-- 注意_id的类型 -->
-                                                <%if(roleResult[i].id.toString()==adminResult.role_id.toString()){%>
+                                                <%if(roleResult[i].id==adminResult.role_id){%>
 
                                                       <option value="<%=roleResult[i].id%>" selected><%=roleResult[i].title%></option>
                                                <%}else{%>

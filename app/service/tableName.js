@@ -1,6 +1,7 @@
 const TABLENAME = {
     ADMIN: "admin",
-    ROLE: "role"
+    ROLE: "role",
+    ACCESS: "access"
 }
 
 module.exports = TABLENAME;
