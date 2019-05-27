@@ -32,7 +32,7 @@ class RoleController extends BaseController {
     async edit() {
         let id = this.ctx.query.id;
         let result = await this.ctx.service.role.getSingleDataById(id);
-        if(result.length == 0){
+        if (result.length == 0) {
             result = [{}];
         }
         await this.ctx.render('admin/role/edit.html', {
@@ -51,6 +51,50 @@ class RoleController extends BaseController {
             await this.error('/admin/role', '角色修改失败~~~');
         } else {
             await this.success('/admin/role', '角色修改成功');
+        }
+    }
+
+    async auth() {
+        let role_id = this.ctx.request.query.id
+        let result = await this.ctx.service.access.getModuleByModuleId();
+        for (let i = 0; i < result.length; i++) {
+            let _id = result[i].id;
+            let subResult = await this.ctx.service.access.getModuleByModuleId(_id);
+            result[i].items = subResult;
+        }
+        await this.ctx.render('admin/role/auth', {
+            list: result,
+            role_id: role_id
+        });
+    }
+
+    async doAuth() {
+        /**
+         * 1. 先删除当前角色的所有权限
+         * 2. 再重新授权
+         */
+        let ctx = this.ctx,
+            { role_id, access_node } = ctx.request.body,
+            accessBoolean = true;
+
+        await ctx.service.roleAccess.deleteByRoleId(role_id);
+
+        for (let i = 0; i < access_node.length; i++) {
+            let result = await ctx.service.roleAccess.insert({
+                role_id,
+                access_id: access_node[i]
+            })
+            if (result && result.insertId > 0) {
+                // ctx.logger.info('添加成功～～～')
+            } else {
+                accessBoolean = false; // 如果失败则立即停止插入数据
+                break;
+            }
+        }
+        if (accessBoolean) {
+            await this.success('/admin/role', '角色授权成功');
+        } else {
+            await this.error('/admin/role', '角色授权失败~~~');
         }
     }
 

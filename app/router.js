@@ -29,6 +29,8 @@ module.exports = app => {
   router.get('/admin/role/delete', controller.admin.role.delete);
   router.post('/admin/role/doAdd', controller.admin.role.doAdd);
   router.post('/admin/role/doEdit', controller.admin.role.doEdit);
+  router.get('/admin/role/auth', controller.admin.role.auth);
+  router.post('/admin/role/doAuth', controller.admin.role.doAuth);
   
   // 权限
   router.get('/admin/access', controller.admin.access.index);
