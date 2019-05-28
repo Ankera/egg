@@ -47,6 +47,16 @@ class AccessService extends Service {
         });
         return result;
     }
+
+    // 根据url来获取对应信息
+    async getSingleDataByUrl(url){
+        let result = await this.app.mysql.select(TABLENAME.ACCESS, {
+            where: {
+                url
+            }
+        });
+        return result;
+    }
 }
 
 module.exports = AccessService;

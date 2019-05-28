@@ -3,6 +3,11 @@
 const Controller = require('egg').Controller;
 
 class BaseController extends Controller {
+
+    async auth(){
+        await this.ctx.render('admin/public/auth');
+    }
+
     async success(redirectUrl, message = "操作成功!") {
 
         await this.ctx.render('admin/public/success',{

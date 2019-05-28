@@ -14,7 +14,7 @@ module.exports = options => {
         pathname = url.parse(pathname).pathname;
 
         // 不需要登录的页面，
-        let noLoginPath = ['/admin/login', '/admin/verify', '/admin/doLogin'];
+        let noLoginPath = ['/admin/login', '/admin/verify', '/admin/doLogin', '/admin/loginOut', '/admin/auth'];
 
         let noLoginboolean = noLoginPath.some(el => {
             if (el == pathname) {
@@ -22,15 +22,20 @@ module.exports = options => {
             }
         });
 
-        if (ctx.session.userinfo) { 
+        if (ctx.session.userinfo) {
             ctx.state.userinfo = ctx.session.userinfo; // 个人信息全局存储
-            await next();
-        } else {  
+            let hasAuth = await ctx.service.auth.checkedAuth();
+            if (hasAuth) {
+                await next();
+            } else {
+                ctx.redirect('/admin/auth');
+            }
+        } else {
             if (noLoginboolean) {
                 await next();
             } else {
                 ctx.redirect('/admin/login');
-            } 
+            }
         }
     }
 }
