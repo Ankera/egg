@@ -33,7 +33,7 @@ class LoginController extends BaseController {
             // 保存用户信息
             ctx.session.userinfo = existenceResult[0];
             // 跳转到用户中心
-            this.ctx.redirect('/admin/manager');
+            this.ctx.redirect('/admin');
         } else {
             await this.error('/admin/login', '账号密码不正确');
         }

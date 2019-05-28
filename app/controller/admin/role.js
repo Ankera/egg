@@ -57,35 +57,7 @@ class RoleController extends BaseController {
     async auth() {
         let ctx = this.ctx;
         let role_id = ctx.request.query.id
-        let result = await ctx.service.access.getModuleByModuleId();
-        for (let i = 0; i < result.length; i++) {
-            let _id = result[i].id;
-            let subResult = await ctx.service.access.getModuleByModuleId(_id);
-            result[i].items = subResult;
-        }
-
-        // 获取当前角色的权限
-        let accessReuslt = await ctx.service.roleAccess.getAccessIdByRoleId(role_id);
-        let accessResultArray = [];
-        accessReuslt.forEach((el,i) => {
-            accessResultArray.push(el.access_id);
-        })
-        /**
-         * 1. 获取当前权限，
-         * 2. 获取对应的role_id的所有权限，
-         * 3. 如果对应的role_id中access_id在所有权限列表中，则表明该角色有此权限
-         */
-        for (let i = 0; i < result.length; i++) {
-            let elt = result[i];
-            if(accessResultArray.indexOf(elt.id) != -1){
-                elt.checked = true;
-            }
-            for (let j = 0; j < elt.items.length; j++) {
-                if(accessResultArray.indexOf(elt.items[j].id) != -1){
-                    elt.items[j].checked = true;
-                }
-            }
-        }
+        let result = await ctx.service.auth.getAuthList(role_id);
 
         await this.ctx.render('admin/role/auth', {
             list: result,
