@@ -40,4 +40,7 @@ module.exports = app => {
   router.get('/admin/access/delete', controller.admin.access.delete);
   router.post('/admin/access/doAdd', controller.admin.access.doAdd);
   router.post('/admin/access/doEdit', controller.admin.access.doEdit);
+
+  // 改变状态功能路由
+  router.get('/admin/changeStatus', controller.admin.common.changeStatus);
 };
