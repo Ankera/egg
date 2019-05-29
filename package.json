@@ -7,12 +7,17 @@
     "declarations": true
   },
   "dependencies": {
+    "ali-oss": "^6.1.1",
+    "co": "^4.6.0",
     "egg": "^2.15.1",
     "egg-mysql": "^3.0.0",
+    "egg-oss": "^2.0.0",
     "egg-scripts": "^2.11.0",
     "egg-view-ejs": "^2.0.0",
     "egg-view-nunjucks": "^2.2.0",
     "md5": "^2.2.1",
+    "stream-to-array": "^2.3.0",
+    "stream-wormhole": "^1.1.0",
     "svg-captcha": "^1.4.0"
   },
   "devDependencies": {

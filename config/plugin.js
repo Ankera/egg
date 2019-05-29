@@ -20,5 +20,10 @@ module.exports = {
     mysql: {
         enable: true,
         package: 'egg-mysql',
+    },
+
+    oss: {
+        enable: true,
+        package: 'egg-oss',
     }
 };
