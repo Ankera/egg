@@ -33,7 +33,8 @@ class AccessService extends Service {
         let result = await this.app.mysql.select(TABLENAME.ACCESS, {
             where: {
                 module_id
-            }
+            },
+            orders: [["sort","ASC"]]
         });
         return result;
     }

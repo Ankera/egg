@@ -1,13 +1,14 @@
 $(function () {
 
 	app.init();
-	app.initImage();
 })
 
 
 var app = {
 	init: function () {
 		this.toggleAside();
+		this.initImage();
+		this.deleteConfirm();
 	},
 
 	toggleAside: function () {
@@ -16,11 +17,18 @@ var app = {
 		})
 	},
 
-	initImage:function(){
+	initImage: function () {
 		let _img = $('#_oss_upload_image');
 		let _src = _img.attr('src');
 		$('#_oss_upload_image').css({
-			display:  _src ? "block" : "none"
+			display: _src ? "block" : "none"
+		})
+	},
+
+	deleteConfirm: function () {
+		$('.delete').click(function () {
+			var flag = confirm('您确定要删除吗?');
+			return flag;
 		})
 	},
 
@@ -46,22 +54,22 @@ var app = {
 	uploadFile: function (el, csrf) {
 		let formData = new FormData();
 		let file = $(el)[0].files[0];
-		formData.append("file",file);
+		formData.append("file", file);
 
 		$.ajax({
-			url: "/admin/uploadFile?_csrf="+csrf,
+			url: "/admin/uploadFile?_csrf=" + csrf,
 			type: 'POST',
 			cache: false,
 			data: formData,
 			processData: false,
 			contentType: false,
-			dataType:"json",
-			success : function(data) {
-				if(data.status){
-					$('#_oss_upload_image').attr("src",data.url);
+			dataType: "json",
+			success: function (data) {
+				if (data.status) {
+					$('#_oss_upload_image').attr("src", data.url);
 					$('#_oss_upload_image').css({
-						"display":"block",
-						"maxWidth":"240px"
+						"display": "block",
+						"maxWidth": "240px"
 					});
 					$('#_oss_upload_image_hidden').attr("value", data.url);
 				}

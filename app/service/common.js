@@ -40,6 +40,8 @@ class CommonService extends Service {
             case 3: 
                 tableName = TABLENAME.ACCESS;
                 break;
+            case 4:
+                tableName = TABLENAME.FOCUS;
         }
 
         let result = await this.app.mysql.update(tableName, {

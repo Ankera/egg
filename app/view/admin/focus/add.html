@@ -32,8 +32,8 @@
                                 <li>  名　　称: <input type="text" name="title"/></li>
                                 <li>  跳转地址: <input type="text" name="link"/></li>
                                 <li>  轮 播 图: 
-                                    <input type="file" name="focus_img" onchange="app.uploadFile(this, '<%=csrf%>')"/>
-                                    <input type="hidden" name="image_url" value="" id="_oss_upload_image_hidden"/>
+                                    <input type="file" name="_file_focus_img" onchange="app.uploadFile(this, '<%=csrf%>')"/>
+                                    <input type="hidden" name="focus_img" value="" id="_oss_upload_image_hidden"/>
                                     <img src="" id="_oss_upload_image"/>
                                 </li>
                                 

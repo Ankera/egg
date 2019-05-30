@@ -62,13 +62,21 @@ table .th{
 }
 
  .input-form li{
-    margin: 5px 0px;
+    margin: 15px 0px;
+    color: #666;
 }
 
 input[type=file]{
  	display: inline !important;
 
 }
+
+.pic{
+
+
+    max-width: 100px;
+}
+
 
 
 .col-sm-2,.col-sm-10{
