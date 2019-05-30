@@ -75,5 +75,24 @@ var app = {
 				}
 			}
 		});
+	},
+
+	editNum: function (el, type, id) {
+		let val = $(el).html();
+		let input = $("<input value='' />").css({"width":"56px"});
+		//把input放在sapn里面
+		$(el).html(input);
+		//让input获取焦点  给input赋值
+		$(input).trigger('focus').val(val);
+		//点击input的时候阻止冒泡
+		$(input).click(function () {
+			return false;
+		})
+		//鼠标离开的时候给sapn赋值
+		$(input).blur(function () {
+			let num = $(this).val();
+			$(el).html(num);
+			$.get('/admin/editSort', { type, id, sort:num });
+		})
 	}
 }

@@ -24,7 +24,7 @@ class CommonService extends Service {
 
     /**
      * 更新状态
-     * @param {*} type 1代表管理员，2代表角色，3代表权限
+     * @param {*} type 1代表管理员，2代表角色，3代表权限, 4轮播图
      * @param {*} status 1取消， 0赞成
      * @param {*} id 
      */
@@ -46,6 +46,38 @@ class CommonService extends Service {
 
         let result = await this.app.mysql.update(tableName, {
             status: status == 1 ? 0 : 1
+        }, {
+            where: {
+                id
+            }
+        });
+        return result;
+    }
+
+    /**
+     * 
+     * @param {*} type type 1代表管理员，2代表角色，3代表权限, 4轮播图
+     * @param {*} id 
+     * @param {*} sort 排序
+     */
+    async updateSort(type, sort, id){
+        let tableName = '';
+        switch(Number(type)){
+            case 1:
+                tableName = TABLENAME.ADMIN;
+                break;
+            case 2:
+                tableName = TABLENAME.ROLE;
+                break;
+            case 3: 
+                tableName = TABLENAME.ACCESS;
+                break;
+            case 4:
+                tableName = TABLENAME.FOCUS;
+        }
+
+        let result = await this.app.mysql.update(tableName, {
+            sort
         }, {
             where: {
                 id

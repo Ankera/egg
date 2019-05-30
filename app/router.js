@@ -43,6 +43,8 @@ module.exports = app => {
 
   // 改变状态功能路由
   router.get('/admin/changeStatus', controller.admin.common.changeStatus);
+  // 改变排序
+  router.get('/admin/editSort', controller.admin.common.editSort);
 
   // 轮播图
   router.get('/admin/focus', controller.admin.focus.index);

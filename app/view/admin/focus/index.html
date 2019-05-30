@@ -23,7 +23,8 @@
                                 <th>名称</th>
                                 <th>分类</th>
                                 <th>图片</th>
-                                <th>跳转地址</th>                                             
+                                <th>跳转地址</th>  
+                                <th class="text-center">排序</th>                                           
                                 <th class="text-center">状态</th>                                             
                             
                                 <th class="text-center">操作</th>
@@ -54,6 +55,7 @@
                                                 </td>   
                                                 <td><img class="pic" src="<%=list[i].focus_img%>" /></td>
                                                 <td><%=list[i].link%></td>
+                                                <td class="text-center"><span onclick="app.editNum(this, 4, '<%=list[i].id%>')"><%=list[i].sort%></span></td>
                                                 <td class="text-center">
 
                                                    <%if(list[i].status==1){%>
