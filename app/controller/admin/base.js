@@ -4,10 +4,6 @@ const Controller = require('egg').Controller;
 
 class BaseController extends Controller {
 
-    async index(){
-        await this.ctx.render('admin/index');
-    }
-
     async auth(){
         await this.ctx.render('admin/public/auth');
     }

@@ -1,27 +1,32 @@
 <ul class="aside">
-
-
-
-
-
-
     <%for(var i=0;i<asideList.length;i++){%>
          		
     <li>
 
-        <%if((asideList[i].checked && asideList[i].type==1 && asideList[i]._noCildrenNode) || (userinfo.is_super==1&& asideList[i].type==1)){%>
-            <h4> <%=asideList[i].module_name %></h4>                     
-            <ul>
-                <%for(var j=0;j<asideList[i].items.length;j++){%> 
-                    <%if((asideList[i].items[j].checked && asideList[i].items[j].type!=3) || (userinfo.is_super==1 && asideList[i].items[j].type!=3)){%>
-                        <li  class="list-group-item"> <a href="<%=asideList[i].items[j].url%>">  <%=asideList[i].items[j].action_name %></a></li>
-                    <%}%>
-                <%}%>
-            </ul>
-        <%}%>
+            <%if((asideList[i].checked && asideList[i].type==1) || (userinfo.is_super==1&& asideList[i].type==1)){%>
+                <h4> <%=asideList[i].module_name %> <span class="nav_open"></span></h4>                     
+                <ul>
+
+                        <%for(var j=0;j<asideList[i].items.length;j++){%> 
+                            <%if((asideList[i].items[j].checked && asideList[i].items[j].type!=3) || (userinfo.is_super==1 && asideList[i].items[j].type!=3)){%>
+                                <li  class="list-group-item"> <a href="<%=asideList[i].items[j].url%>" target="rightMain">  <%=asideList[i].items[j].action_name %></a></li>
+                            <%}%>
+                        <%}%>
+                </ul>
+
+
+            <%}%>
+          
     </li>
 
     <%}%>
+
+   
+
+
+
+
+   
     <!-- <li>
         <h4>商品管理</h4>
         

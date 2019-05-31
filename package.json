@@ -16,6 +16,7 @@
     "egg-view-ejs": "^2.0.0",
     "egg-view-nunjucks": "^2.2.0",
     "md5": "^2.2.1",
+    "silly-datetime": "^0.1.2",
     "stream-to-array": "^2.3.0",
     "stream-wormhole": "^1.1.0",
     "svg-captcha": "^1.4.0"

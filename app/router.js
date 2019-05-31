@@ -5,7 +5,8 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/admin', controller.admin.base.index);
+  router.get('/admin', controller.admin.main.index);  
+  router.get('/admin/welcome', controller.admin.main.welcome);  
 
   // 后台路由
   router.get('/admin/login', controller.admin.login.index);
