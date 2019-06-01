@@ -24,7 +24,7 @@ class CommonService extends Service {
 
     /**
      * 更新状态
-     * @param {*} type 1代表管理员，2代表角色，3代表权限, 4轮播图, 5是商品管理类型
+     * @param {*} type 1代表管理员，2代表角色，3代表权限, 4轮播图, 5是商品管理类型， 6商品类型属性
      * @param {*} status 1取消， 0赞成
      * @param {*} id 
      */
@@ -44,6 +44,8 @@ class CommonService extends Service {
                 tableName = TABLENAME.FOCUS;
             case 5:
                 tableName = TABLENAME.GOODS_TYPE;
+            case 6:
+                tableName = TABLENAME.GOODS_TYPE_ATTRIBUTE;
         }
 
         let result = await this.app.mysql.update(tableName, {
