@@ -17,10 +17,10 @@
                                 <th>属性名称</th>
                                 <th>商品类型</th>
                                 <th>属性值的录入方式</th>                                
-                                <th>可选值列表</th>          
-                                <th>增加时间</th>  
+                                <th>可选值列表</th> 
+                                <th>排序</th>  
                                 <th class="text-center">状态</th>                                                
-                            
+                                <th>增加时间</th>   
                                 <th class="text-center">操作</th>
                             </tr>
                             </thead>
@@ -44,8 +44,8 @@
                                             </td>
                                             <td><%=list[i].attr_value%></td>
 
-                                            <td><%=helper.formatTime(list[i].add_time)%></td>
-
+                                            
+                                            <td class="text-center"><span onclick="app.editNum(this, 6, '<%=list[i].id%>')"><%=list[i].sort%></span></td>
                                             <td  class="text-center">
 
                                                     <%if(list[i].status==1){%>
@@ -57,7 +57,7 @@
                                                     <%}%>
 
                                             </td>    
-                                                                
+                                            <td><%=helper.formatTime(list[i].add_time)%></td>               
                                             <td class="text-center">
                                                 <a href="/admin/goodsTypeAttribute/edit?id=<%=list[i].id%>">修改</a>　
                                                 <a class="delete" href="/admin/goodsTypeAttribute/delete?id=<%=list[i].id%>">删除</a>

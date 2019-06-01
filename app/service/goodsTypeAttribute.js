@@ -47,6 +47,7 @@ class GoodsTypeAttributeService extends Service {
             gta.attr_value,
             gta.status,
             gta.add_time,
+            gta.sort,
             gt.title AS parentTitle
             FROM ${TABLENAME.GOODS_TYPE_ATTRIBUTE} AS gta 
             LEFT JOIN ${TABLENAME.GOODS_TYPE} AS gt ON gta.cate_id = gt.id 

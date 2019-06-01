@@ -28,8 +28,8 @@ class GoodsTypeAttributeController extends BaseController {
 
     async doAdd(){
         let ctx = this.ctx;
-        let { title, cate_id, attr_type, attr_value } = ctx.request.body;
-        let result = await ctx.service.goodsTypeAttribute.insert({title, cate_id, attr_type, attr_value});
+        let { title, cate_id, attr_type, attr_value, sort } = ctx.request.body;
+        let result = await ctx.service.goodsTypeAttribute.insert({title, cate_id, attr_type, attr_value, sort});
         let goodsTypeResult = await ctx.service.goodsType.getSingleDataById(cate_id);
         if (result && result.insertId > 0) {
             await this.success(`/admin/goodsTypeAttribute?id=${cate_id}&title=${goodsTypeResult[0].title}`, '商品类型属性增加成功');
@@ -51,8 +51,8 @@ class GoodsTypeAttributeController extends BaseController {
 
     async doEdit(){
         let ctx = this.ctx;
-        let { id, title, cate_id, attr_type, attr_value } = ctx.request.body;
-        let result = await ctx.service.goodsTypeAttribute.update({title, cate_id, attr_type, attr_value}, id);
+        let { id, title, cate_id, attr_type, attr_value, sort } = ctx.request.body;
+        let result = await ctx.service.goodsTypeAttribute.update({title, cate_id, attr_type, attr_value, sort}, id);
         let goodsTypeResult = await ctx.service.goodsType.getSingleDataById(cate_id);
         if (result.affectedRows < 0) {
             await this.error(`/admin/goodsTypeAttribute?id=${cate_id}&title=${goodsTypeResult[0].title}`, '商品类型属性修改失败~~~');

@@ -17,8 +17,8 @@ class GoodsTypeController extends BaseController {
 
     async doAdd(){
         let ctx = this.ctx;
-        let { title, description } = ctx.request.body;
-        let result = await ctx.service.goodsType.insert({title, description});
+        let { title, description, sort } = ctx.request.body;
+        let result = await ctx.service.goodsType.insert({title, description, sort});
         if (result && result.insertId > 0) {
             await this.success('/admin/goodsType', '商品类型增加成功');
         } else {
@@ -37,8 +37,8 @@ class GoodsTypeController extends BaseController {
 
     async doEdit(){
         let ctx = this.ctx;
-        let { title, description, id } = ctx.request.body;
-        let result = await ctx.service.goodsType.update({title, description}, id);
+        let { title, description, id, sort} = ctx.request.body;
+        let result = await ctx.service.goodsType.update({title, description, sort}, id);
         if (result.affectedRows < 0) {
             await this.error('/admin/goodsType', '商品类型修改失败~~~');
         } else {

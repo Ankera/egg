@@ -15,9 +15,9 @@
                             <tr class="th">
                                 <th>商品类型名称</th>
                                 <th>描述</th>
-                                <th>增加时间</th>  
+                                <th>排序</th> 
                                 <th class="text-center">状态</th>                                                
-                            
+                                <th>增加时间</th>  
                                 <th class="text-center">操作</th>
                             </tr>
                             </thead>
@@ -29,8 +29,8 @@
                                     <tr>
                                             <td><%=list[i].title%></td>
                                             <td><%=list[i].description%></td>
-                                            <td><%=helper.formatTime(list[i].add_time)%></td>
-
+                                            
+                                            <td class="text-center"><span onclick="app.editNum(this, 5, '<%=list[i].id%>')"><%=list[i].sort%></span></td>
                                             <td  class="text-center">
 
                                                     <%if(list[i].status==1){%>
@@ -41,7 +41,7 @@
                                                     <%}%>
 
                                             </td>    
-                                                                
+                                            <td><%=helper.formatTime(list[i].add_time)%></td>             
                                             <td class="text-center">
                                                 <a href="/admin/goodsTypeAttribute?id=<%=list[i].id%>&title=<%=list[i].title%>">属性列表</a>
                                                 <a href="/admin/goodsType/edit?id=<%=list[i].id%>">修改</a>
