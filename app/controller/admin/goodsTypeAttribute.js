@@ -6,12 +6,13 @@ class GoodsTypeAttributeController extends BaseController {
     
     async index(){
         let ctx = this.ctx;
-        let { id } = ctx.query;
+        let { id, title } = ctx.query;
 
         let result= await this.ctx.service.goodsTypeAttribute.getAllList(id);
         await this.ctx.render('admin/goodsTypeAttribute/index.html',{
             list:result,
-            cate_id: id
+            cate_id: id,
+            goodsTypeTitle:title
         });
     }
 
@@ -28,11 +29,12 @@ class GoodsTypeAttributeController extends BaseController {
     async doAdd(){
         let ctx = this.ctx;
         let { title, cate_id, attr_type, attr_value } = ctx.request.body;
-        let result = await ctx.service.goodsTypeAttribute.insert({title, cate_id, attr_type, attr_value})
+        let result = await ctx.service.goodsTypeAttribute.insert({title, cate_id, attr_type, attr_value});
+        let goodsTypeResult = await ctx.service.goodsType.getSingleDataById(cate_id);
         if (result && result.insertId > 0) {
-            await this.success(`/admin/goodsTypeAttribute?id=${cate_id}`, '商品类型属性增加成功');
+            await this.success(`/admin/goodsTypeAttribute?id=${cate_id}&title=${goodsTypeResult[0].title}`, '商品类型属性增加成功');
         } else {
-            await this.error(`/admin/goodsTypeAttribute?id=${cate_id}`, '商品类型属性增加失败~~~');
+            await this.error(`/admin/goodsTypeAttribute?id=${cate_id}&title=${goodsTypeResult[0].title}`, '商品类型属性增加失败~~~');
         }
     }
 
@@ -51,10 +53,11 @@ class GoodsTypeAttributeController extends BaseController {
         let ctx = this.ctx;
         let { id, title, cate_id, attr_type, attr_value } = ctx.request.body;
         let result = await ctx.service.goodsTypeAttribute.update({title, cate_id, attr_type, attr_value}, id);
+        let goodsTypeResult = await ctx.service.goodsType.getSingleDataById(cate_id);
         if (result.affectedRows < 0) {
-            await this.error(`/admin/goodsTypeAttribute?id=${cate_id}`, '商品类型属性修改失败~~~');
+            await this.error(`/admin/goodsTypeAttribute?id=${cate_id}&title=${goodsTypeResult[0].title}`, '商品类型属性修改失败~~~');
         } else {
-            await this.success(`/admin/goodsTypeAttribute?id=${cate_id}`, '商品类型属性修改成功');
+            await this.success(`/admin/goodsTypeAttribute?id=${cate_id}&title=${goodsTypeResult[0].title}`, '商品类型属性修改成功');
         }
     }
 

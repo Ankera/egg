@@ -1,11 +1,36 @@
 ._access_top {
     background-color: #f0f0f0;
 }
-
 ul{
     list-style-type: none;
     margin: 0px;
     padding: 0px;
+}
+
+.fr{
+
+    float: right;
+}
+
+.fl{
+
+    float: left;
+}
+
+.clear::after{
+
+    clear: both;
+    content: '';
+
+    height: 0px;
+    display: block;
+
+
+}
+
+.panel-heading span{
+    position: relative;
+    top:10px;
 }
 
 .aside h4{
@@ -74,6 +99,10 @@ ul{
 
 
 
+
+
+
+
 .navbar-header{
     width: 180px;
     text-align: center;
@@ -120,6 +149,8 @@ input[type=file]{
 }
 
 .pic{
+
+
     max-width: 100px;
 }
 
@@ -133,3 +164,5 @@ input[type=file]{
 .navbar{
 	border-radius: 0px;
 }
+
+
