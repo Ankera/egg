@@ -5,7 +5,7 @@ const BaseController = require('./base.js');
 class CommonController extends BaseController {
     async changeStatus() {
         /**
-         * type 1代表管理员，2代表角色，3代表权限, 4是轮播
+         * type 1代表管理员，2代表角色，3代表权限, 4是轮播, 5是商品管理类型
          * status 1取消， 0赞成
          */
         let ctx = this.ctx,

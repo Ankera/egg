@@ -35,10 +35,10 @@
 
                                                     <%if(list[i].status==1){%>
 
-                                                            <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'GoodsType','status','<%=list[i]._id%>')" />
+                                                            <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this, 5, 1,'<%=list[i].id%>')" />
 
                                                     <%}else{%>
-                                                            <img src="/public/admin/images/no.gif" onclick="app.changeStatus(this,'GoodsType','status','<%=list[i]._id%>')" />
+                                                            <img src="/public/admin/images/no.gif" onclick="app.changeStatus(this, 5, 0,'<%=list[i].id%>')" />
                                                     <%}%>
 
                                             </td>    
