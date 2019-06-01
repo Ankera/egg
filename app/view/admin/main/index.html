@@ -1,7 +1,5 @@
+<% if (userinfo) { %>
 <%- include ../public/page_header.html %>
-
-
-
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -44,3 +42,16 @@
 
 </body>
 </html>
+<%}else{%>
+<link rel="stylesheet" href="/public/admin/bootstrap/css/bootstrap.css">
+<div class="container-fluid">
+    <div class="row">
+        <div class="container" style="margin-top: 100px;width: 600px;">
+            <div class="alert alert-success" style="text-align:center">
+                <h1>欢迎来到通用型后台管理系统</h1>
+                <a href="/admin/login" style="padding-top:48px;display: block;">登录</a>
+            </div>
+	    </div>
+    </div>
+</div>
+<% } %>

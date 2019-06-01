@@ -5,7 +5,7 @@ const BaseController = require('./base.js');
 class GoodsTypeController extends BaseController {
     async index() {
         //查询商品类型表
-        var result= await this.ctx.service.goodsType.getAllList();
+        let result= await this.ctx.service.goodsType.getAllList();
         await this.ctx.render('admin/goodsType/index.html',{
             list:result
         });

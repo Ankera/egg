@@ -34,6 +34,7 @@ module.exports = options => {
                 ctx.redirect('/admin/auth');
             }
         } else {
+            ctx.state.userinfo = null; // 表示未登录
             if (noLoginboolean) {
                 await next();
             } else {
