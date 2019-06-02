@@ -36,7 +36,7 @@ ul{
 
     width: 100px;
     text-align: right;
-    margin-right: 12px;
+
 }
 
 
@@ -179,3 +179,38 @@ input[type=file]{
 }
 
 
+
+/*商品详情*/
+
+.goods_content{
+
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.nav-tabs{
+
+    background: #eee;
+}
+
+
+.tab-content{
+
+    position: relative;
+
+    top:-24px;
+    background: #fff;
+
+    padding-top:20px;
+ 
+
+
+}
+
+.goods_content_btn{
+    position: relative;
+
+    left:50px;
+
+    bottom: 20px;
+}

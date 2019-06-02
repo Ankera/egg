@@ -19,6 +19,9 @@ var app = {
 	},
 
 	toggleAside:function(){
+		// 临时关闭
+		$('.aside>li:nth-child(1) ul,.aside>li:nth-child(2) ul,.aside>li:nth-child(3) ul').hide();
+
 		$('.aside h4').click(function(){
 			if($(this).find('span').hasClass('nav_close')){
 				$(this).find('span').removeClass('nav_close').addClass('nav_open');

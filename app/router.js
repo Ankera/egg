@@ -54,7 +54,15 @@ module.exports = app => {
   router.get('/admin/focus/delete', controller.admin.focus.delete);
   router.post('/admin/focus/doEdit', controller.admin.focus.doEdit);
   router.post('/admin/focus/doAdd', controller.admin.focus.doAdd); 
-  
+
+  //颜色管理
+  router.get('/admin/goodsColor', controller.admin.goodsColor.index);
+  router.get('/admin/goodsColor/add', controller.admin.goodsColor.add);
+  router.get('/admin/goodsColor/edit', controller.admin.goodsColor.edit);
+  router.get('/admin/goodsColor/delete', controller.admin.goodsColor.delete);
+  router.post('/admin/goodsColor/doEdit', controller.admin.goodsColor.doEdit);
+  router.post('/admin/goodsColor/doAdd', controller.admin.goodsColor.doAdd); 
+
   // 上传图片
   router.post('/admin/uploadFile', controller.admin.upload.uploadSingleFile);
 
@@ -82,4 +90,10 @@ module.exports = app => {
   router.get('/admin/goodsCate/delete', controller.admin.goodsCate.delete);
   router.post('/admin/goodsCate/doEdit', controller.admin.goodsCate.doEdit);
   router.post('/admin/goodsCate/doAdd', controller.admin.goodsCate.doAdd);
+
+  // 商品列表
+  router.get('/admin/goods', controller.admin.goods.index);
+  router.get('/admin/goods/add', controller.admin.goods.add);
+  router.post('/admin/goods/doAdd', controller.admin.goods.doAdd);
+  router.get('/admin/goods/goodsTypeAttribute', controller.admin.goods.goodsTypeAttribute);
 };

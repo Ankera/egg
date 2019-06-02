@@ -25,11 +25,21 @@ class GoodsTypeAttributeService extends Service {
         return result;
     }
 
-     // 通过ID来查询
-     async getSingleDataById(id){
+    // 通过ID来查询
+    async getSingleDataById(id){
         let result = await this.app.mysql.select(TABLENAME.GOODS_TYPE_ATTRIBUTE, {
             where: {
                 id
+            }
+        });
+        return result;
+    }
+
+    // 通过cate_id来查询
+    async getSingleDataByCateId(cate_id){
+        let result = await this.app.mysql.select(TABLENAME.GOODS_TYPE_ATTRIBUTE, {
+            where: {
+                cate_id
             }
         });
         return result;

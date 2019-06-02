@@ -57,7 +57,7 @@
                                                                 <td class="text-center"><span onclick="app.editNum(this, 7, '<%=list[i].items[j].id%>')"><%=list[i].items[j].sort%></span></td>
                                                                 <td class="text-center">
                         
-                                                                    <%if(list[i].status==1){%>
+                                                                    <%if(list[i].items[j].status==1){%>
                                                                         <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,7,1,'<%=list[i].items[j].id%>')" />
                                                                     <%}else{%>
                                                                         <img src="/public/admin/images/no.gif" onclick="app.changeStatus(this,7,0,'<%=list[i].items[j].id%>')" />
