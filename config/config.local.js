@@ -13,5 +13,9 @@ module.exports = {
         endpoint: 'oss-cn-hangzhou.aliyuncs.com',
         timeout: '60s',
         secure: true
+    },
+
+    multipart: {
+        fields: '50'
     }
 }

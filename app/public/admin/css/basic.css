@@ -1,6 +1,3 @@
-._access_top {
-    background-color: #f0f0f0;
-}
 ul{
     list-style-type: none;
     margin: 0px;
@@ -27,6 +24,22 @@ ul{
 
 
 }
+
+.input{
+
+    width:600px;
+}
+
+
+.form_input span{
+    display: inline-block;
+
+    width: 100px;
+    text-align: right;
+    margin-right: 12px;
+}
+
+
 
 .panel-heading span{
     position: relative;

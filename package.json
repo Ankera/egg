@@ -15,6 +15,7 @@
     "egg-scripts": "^2.11.0",
     "egg-view-ejs": "^2.0.0",
     "egg-view-nunjucks": "^2.2.0",
+    "jimp": "^0.6.4",
     "md5": "^2.2.1",
     "silly-datetime": "^0.1.2",
     "stream-to-array": "^2.3.0",
