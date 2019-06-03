@@ -50,7 +50,7 @@
                                         <li> <span> 附属标题:</span> <input type="text" name="sub_title" class="input"/></li>
                                         <li>  <span>商品版本:</span> <input type="text" name="goods_version" class="input"/></li>                            
                                         <li>  <span>所属分类:</span> 
-                                            <select name="cid" id="cid">
+                                            <select name="cate_id" id="cid">
                                                 <%for(var i=0;i<goodsCate.length;i++){%>
                                                     <option value="<%=goodsCate[i].id%>"><%=goodsCate[i].title%></option>
                                                     <%for(var j=0;j<goodsCate[i].items.length;j++){%>
@@ -63,26 +63,27 @@
                                         <li>
                                             <span> 商品图片:</span> 
                                             <input type="file" name="_file_focus_img" onchange="app.uploadFile(this, '<%=csrf%>')"/>
-                                            <input type="hidden" name="pic" value="" id="_oss_upload_image_hidden"/>
+                                            <input type="hidden" name="goods_img" value="" id="_oss_upload_image_hidden"/>
                                             <img src="" id="_oss_upload_image"/>
                                         </li>
-                                        <li>  <span>商品价格:</span> <input type="text" name="price"/></li>
-                                        <li>  <span>商品原价:</span>  <input type="text" name="old_price"/></li>
+                                        <li>  <span>商品价格:</span> <input type="text" name="shop_price"/></li>
+                                        <li>  <span>商品原价:</span>  <input type="text" name="market_price"/></li>
             
                                         <li> <span>商品状态:</span>　<input type="radio" value="1" name="status" checked/> 显示                                    　
                                             <input type="radio" value="0" name="status"/>  隐藏
                                          </li>
                      
-                                         <li> <span>加入推荐:</span>　<input type="checkbox" value="1" name="is_best"/> 精品
-                                             <input type="checkbox" value="1" name="is_hot"/> 热销
-                                             <input type="checkbox" value="1" name="is_new"/> 新品
+                                         <li> <span>加入推荐:</span>　
+                                            <input type="checkbox" value="1" name="is_best"/> 精品
+                                            <input type="checkbox" value="1" name="is_hot"/> 热销
+                                            <input type="checkbox" value="1" name="is_new"/> 新品
                                          </li>
                                </ul>
 
                         </div>
                         <div role="tabpanel" class="tab-pane" id="detail">
 
-                            <textarea name="content" id="content" cols="100" rows="8"></textarea>
+                            <textarea name="goods_content" id="content" cols="100" rows="8"></textarea>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="mix">
                                 
@@ -91,7 +92,7 @@
                                         <li> <span>商品颜色:</span>
                                            
                                                 <%for(var i=0;i<colorResult.length;i++){%>
-                                                    <input type="checkbox" name="colors[]" value="<%=colorResult[i].id%>" id="color_<%=colorResult[i].id%>" /> <label for="color_<%=colorResult[i].id%>"><%=colorResult[i].color_name%></label>
+                                                    <input type="checkbox" name="goods_color[]" value="<%=colorResult[i].id%>" id="color_<%=colorResult[i].id%>" /> <label for="color_<%=colorResult[i].id%>"><%=colorResult[i].color_name%></label>
                                                 <%}%>
         
                                          </li>

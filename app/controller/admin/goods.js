@@ -24,7 +24,29 @@ class GoodsController extends BaseController {
 
     async doAdd(){
         let ctx = this.ctx;
-        console.log('hello world');
+        let { 
+            title,
+            sub_title,
+            goods_version,
+            cate_id,
+            goods_img,
+            shop_price,
+            market_price,
+            status,
+            is_best,
+            is_hot,
+            is_new,
+            goods_content,
+            goods_color,
+            relation_goods,
+            goods_gift,
+            goods_fitting,
+            goods_attr,
+            attr_id_list,
+            attr_value_list,
+            goods_image_list
+        } = ctx.request.body;
+        
         console.log(ctx.request.body);
         this.ctx.body = 'hello ...';
     }
