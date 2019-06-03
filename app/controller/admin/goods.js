@@ -10,9 +10,15 @@ class GoodsController extends BaseController {
     async add(){
         let colorResult = await this.ctx.service.goodsColor.getAllList();
         let goodsType= await this.ctx.service.goodsType.getAllList();
+        let result = await this.ctx.service.goodsCate.getSingleDataByPid(0);
+        for (let i = 0; i < result.length; i++) {
+            let itemResults = await this.ctx.service.goodsCate.getSingleDataByPid(result[i].id);
+            result[i].items = itemResults;
+        }
         await this.ctx.render('admin/goods/add',{
             colorResult: colorResult,
-            goodsType: goodsType
+            goodsType: goodsType,
+            goodsCate:result
         });
     }
 

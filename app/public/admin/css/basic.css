@@ -214,3 +214,14 @@ input[type=file]{
 
     bottom: 20px;
 }
+
+
+.photoLib{
+
+    width: 120px;
+    margin: 40px auto 20px auto;
+
+    
+}
+
+.photoLib div:nth-child(2){width:100%!important;height:100%!important;}   

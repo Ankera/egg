@@ -1,4 +1,28 @@
-<%- include ../public/page_header.html %>   
+<%- include ../public/page_header.html %>
+
+
+
+    <!-- Include CSS for icons. -->
+    <link href="/public/admin/wysiwyg-editor/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Editor style. -->
+    <link href="/public/admin/wysiwyg-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="/public/admin/wysiwyg-editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- 引入jquery -->
+    <!-- Include Editor JS files. -->
+    <script type="text/javascript" src="/public/admin/wysiwyg-editor/js/froala_editor.pkgd.min.js"></script>
+
+
+    <script type="text/javascript" src="/public/admin/wysiwyg-editor/js/zh_cn.js"></script>
+
+    <!-- 批量上传图片插件 -->
+    <link rel="stylesheet" type="text/css" href="/public/admin/webuploader/css/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="/public/admin/webuploader/css/diyUpload.css">
+    <script type="text/javascript" src="/public/admin/webuploader/js/webuploader.html5only.min.js"></script>
+    <script type="text/javascript" src="/public/admin/webuploader/js/diyUpload.js"></script>
+          
     <div class="panel panel-default">              
         
         <div class="panel-body">
@@ -8,11 +32,12 @@
 
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#general"  role="tab" data-toggle="tab">通用信息</a></li>
-                        <li role="presentation"><a href="#detail" role="tab" data-toggle="tab">详细描述</a></li>
-                        <li role="presentation"><a href="#mix"  role="tab" data-toggle="tab">商品属性</a></li>
-                        <li role="presentation"><a href="#attribute"  role="tab" data-toggle="tab">规格与包装</a></li>
-                        <li role="presentation"><a href="#photo"  role="tab" data-toggle="tab">商品相册</a></li>                
+                            <li role="presentation" class="active"><a href="#general"  role="tab" data-toggle="tab">通用信息</a></li>
+                            <li role="presentation"><a href="#detail" role="tab" data-toggle="tab">详细描述</a></li>
+                            <li role="presentation"><a href="#mix"  role="tab" data-toggle="tab">商品属性</a></li>
+                            <li role="presentation"><a href="#attribute"  role="tab" data-toggle="tab">规格与包装</a></li>
+                            <li role="presentation"><a href="#photo"  role="tab" data-toggle="tab">商品相册</a></li>              
+                            
                     </ul>
                     
                     <!-- Tab panes -->
@@ -24,14 +49,23 @@
                                         <li> <span> 商品标题:</span> <input type="text" name="title" class="input"/></li>                            
                                         <li> <span> 附属标题:</span> <input type="text" name="sub_title" class="input"/></li>
                                         <li>  <span>商品版本:</span> <input type="text" name="goods_version" class="input"/></li>                            
-                                        <li>  <span>所属分类:</span> <select name="cid" id="cid">
-                                            
+                                        <li>  <span>所属分类:</span> 
+                                            <select name="cid" id="cid">
+                                                <%for(var i=0;i<goodsCate.length;i++){%>
+                                                    <option value="<%=goodsCate[i].id%>"><%=goodsCate[i].title%></option>
+                                                    <%for(var j=0;j<goodsCate[i].items.length;j++){%>
+                                                        <option value="<%=goodsCate[i].items[j].id%>">----<%=goodsCate[i].items[j].title%></option>
+                                                    <%}%>
+                                                <%}%>
                                             </select>
-                    
                                             <input type="hidden" name="cname" id="cname" />    
-                    
                                         </li>
-                                        <li> <span> 商品图片:</span> <input type="file" name="pic"/></li>
+                                        <li>
+                                            <span> 商品图片:</span> 
+                                            <input type="file" name="_file_focus_img" onchange="app.uploadFile(this, '<%=csrf%>')"/>
+                                            <input type="hidden" name="pic" value="" id="_oss_upload_image_hidden"/>
+                                            <img src="" id="_oss_upload_image"/>
+                                        </li>
                                         <li>  <span>商品价格:</span> <input type="text" name="price"/></li>
                                         <li>  <span>商品原价:</span>  <input type="text" name="old_price"/></li>
             
@@ -56,7 +90,7 @@
 
                                         <li> <span>商品颜色:</span>
                                            
-                                                <%for(let i=0;i<colorResult.length;i++){%>
+                                                <%for(var i=0;i<colorResult.length;i++){%>
                                                     <input type="checkbox" name="colors[]" value="<%=colorResult[i].id%>" id="color_<%=colorResult[i].id%>" /> <label for="color_<%=colorResult[i].id%>"><%=colorResult[i].color_name%></label>
                                                 <%}%>
         
@@ -105,7 +139,7 @@
 
                                                 <option value="0">--请选择商品类型--</option>
 
-                                                <%for(let i=0;i<goodsType.length;i++){%>
+                                                <%for(var i=0;i<goodsType.length;i++){%>
                                                     <option value="<%=goodsType[i].id%>"><%=goodsType[i].title%></option>
                                                 <%}%>
 
@@ -125,12 +159,23 @@
                         </div>
                         <div role="tabpanel" class="tab-pane" id="photo">
 
-                                商品相册
+                                <div id="photoLib"  class="photoLib"></div>
+
+
+                                <div id="photoList">
+
+
+                                </div>
                         </div>
                     </div>
+                     
+
                     <input type="hidden" name="_csrf" value="<%=csrf%>">  
 
                     <button type="submit" class="btn btn-success goods_content_btn">提交</button>
+    
+
+
                 </form>
             </div>
         </div>
@@ -139,56 +184,74 @@
     </div>
 
     <script>
-            $(function(){
-                $('#goods_type_id').change(function(){
     
+            $(function(){
+    
+    
+                $('#goods_type_id').change(function(){
                     let cate_id=$(this).val();
     
                     let data='';
                     $.get('/admin/goods/goodsTypeAttribute?cate_id='+cate_id,function(response){
-                        data=response.result;
+                        data=response.result;    
+                        var str="";
+                        for(var i=0;i<data.length;i++){
     
-                        let str="";
-                        for(let i=0;i<data.length;i++){
-    
-                            if(data[i].attr_type==1){
-    
+                            if(data[i].attr_type==1){    
                                str+='<li><span>'+data[i].title+': 　</span><input type="hidden" name="attr_id_list[]" value="'+data[i].id+'" />  <input type="text" name="attr_value_list[]" /></li>' 
                             }else if(data[i].attr_type==2){
                                 str+='<li><span>'+data[i].title+': 　</span> <input type="hidden" name="attr_id_list[]" value="'+data[i].id+'">  <textarea cols="50" rows="3" name="attr_value_list[]"></textarea></li>'                            
                              }else{
-                                let arr=data[i].attr_value.split('\n');
-    
+                                var arr=data[i].attr_value.split('\n');   
     
                                 str+='<li><span>'+data[i].title+': 　</span><input type="hidden" name="attr_id_list[]" value="'+data[i].id+'">';
     
                                     str+='<select name="attr_value_list[]">';
                                         
-                                        for(let j=0;j<arr.length;j++){
+                                        for(var j=0;j<arr.length;j++){
                                             
                                             str+='<option value="'+arr[j]+'">'+arr[j]+'</option>';
                                         }
                                     str+='</select>';
                                 str+='</li>';
-    
-                                
-    
                             }
     
-                        }
-    
+                        }    
     
                         $('#goods_type_attribute').html(str);
-    
-    
                     })
-    
-    
     
                 })
             })
         
         </script>
+        <script>
+            $(function() {
+                $('#content').froalaEditor({
+                    height: 300,    //给编辑器设置默认的高度
+                    language: 'zh_cn',   
+                    imageUploadURL: `/admin/uploadFile?_csrf=${app.getCookie('csrfToken')}`,
+                    //根据不同的分辨率加载不同的配置
+                    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'embedly', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'],
+                    toolbarButtonsMD: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'embedly', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'],
+                    toolbarButtonsSM: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'embedly', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo']
+                });
+            });
 
+            $(function(){
+                let photoStr='';                
+                $('#photoLib').diyUpload({
+                    url:`/admin/uploadFile?_csrf=${app.getCookie('csrfToken')}`,                    
+                    success:function( response ) {
+                        console.log(response);
+                        photoStr='<input type="hidden" name="goods_image_list[]" value='+response.link+' />';
+                        $('#photoList').append(photoStr);
+                    },
+                    error:function( err ) {
+                        console.info( err );	
+                    }
+                });
+            })
+        </script>
 </body>
 </html>

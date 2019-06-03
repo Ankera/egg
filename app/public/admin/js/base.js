@@ -12,20 +12,20 @@ var app = {
 		this.resizeIframe();
 	},
 
-	resizeIframe:function(){
-		let heights = document.documentElement.clientHeight-100;
-		$("#rightMain").height(heights)	
+	resizeIframe: function () {
+		let heights = document.documentElement.clientHeight - 100;
+		$("#rightMain").height(heights)
 		// document.getElementById('rightMain').height = heights;
 	},
 
-	toggleAside:function(){
+	toggleAside: function () {
 		// 临时关闭
 		$('.aside>li:nth-child(1) ul,.aside>li:nth-child(2) ul,.aside>li:nth-child(3) ul').hide();
 
-		$('.aside h4').click(function(){
-			if($(this).find('span').hasClass('nav_close')){
+		$('.aside h4').click(function () {
+			if ($(this).find('span').hasClass('nav_close')) {
 				$(this).find('span').removeClass('nav_close').addClass('nav_open');
-			}else{
+			} else {
 				$(this).find('span').removeClass('nav_open').addClass('nav_close');
 			}
 			$(this).siblings('ul').slideToggle();
@@ -81,12 +81,12 @@ var app = {
 			dataType: "json",
 			success: function (data) {
 				if (data.status) {
-					$('#_oss_upload_image').attr("src", data.url);
+					$('#_oss_upload_image').attr("src", data.link);
 					$('#_oss_upload_image').css({
 						"display": "block",
 						"maxWidth": "240px"
 					});
-					$('#_oss_upload_image_hidden').attr("value", data.url);
+					$('#_oss_upload_image_hidden').attr("value", data.link);
 				}
 			}
 		});
@@ -94,7 +94,7 @@ var app = {
 
 	editNum: function (el, type, id) {
 		let val = $(el).html();
-		let input = $("<input value='' />").css({"width":"56px"});
+		let input = $("<input value='' />").css({ "width": "56px" });
 		//把input放在sapn里面
 		$(el).html(input);
 		//让input获取焦点  给input赋值
@@ -107,11 +107,22 @@ var app = {
 		$(input).blur(function () {
 			let num = $(this).val();
 			$(el).html(num);
-			$.get('/admin/editSort', { type, id, sort:num });
+			$.get('/admin/editSort', { type, id, sort: num });
 		})
+	},
+
+	// 获取对应的cookie值
+	getCookie(name) {
+		let arr = [],
+			reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+		if (arr = document.cookie.match(reg)) {
+			return unescape(arr[2])
+		} else {
+			return null;
+		}
 	}
 }
 
-$(window).resize(function(){
+$(window).resize(function () {
 	app.resizeIframe();
 })

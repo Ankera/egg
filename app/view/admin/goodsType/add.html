@@ -6,15 +6,15 @@
         <div class="panel-body">
             <div class="table-responsive input-form">
                 <form action="/admin/goodsType/doAdd" method="post">
-                    <ul>
+                    <ul class="form_input">
 
                         <input type="hidden" name="_csrf" value="<%=csrf%>">
-                        <li>  商品类型名称: <input type="text" name="title"/></li>
+                        <li> <span>商品类型名称:</span>  <input type="text" name="title"/></li>
 
                         
-                        <li>  排　　序: <input type="text" name="sort" value="100"/></li>
+                        <li> <span> 排　　序: </span><input type="text" name="sort" value="100"/></li>
                         <li>
-                            商品类型描述:
+                            <span>商品类型描述:</span>
                             <textarea name="description" id="" cols="60" rows="8"></textarea>
                         </li>
 

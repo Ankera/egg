@@ -14,7 +14,6 @@ class UploadController extends Controller {
             json = {
                 status: false,
                 message: "未上传",
-                url: ""
             };
         
         while((part = await parts()) != null){
@@ -26,7 +25,7 @@ class UploadController extends Controller {
                         buffer = Buffer.concat(partArr);
 
                         let result = await ctx.service.oss.put(name, buffer);
-                        json.url = result.msg.url;
+                        json.link = result.msg.url;
                         json.message = '文件上传成功';
                         json.status = true;
                     }
