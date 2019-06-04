@@ -24,6 +24,17 @@ class GoodsService extends Service {
         });
         return result;
     }
+
+    async getAllList(page, pageSize) {
+        let ctx = this.ctx;
+        page = await ctx.service.common.returnPage(page);
+        pageSize = await ctx.service.common.returnPageSize(pageSize);
+        let result = await this.app.mysql.select(TABLENAME.GOODS, {
+            limit: pageSize,
+            offset: (page - 1) * pageSize
+        });
+        return result;
+    }
 }
 
 module.exports = GoodsService;

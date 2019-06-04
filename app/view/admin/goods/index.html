@@ -6,9 +6,9 @@
                         <a href="/admin/goods/add" class="btn btn-primary">增加商品</a>
                     </div>
                     <div class="panel-body">
-                    <!--
-                        列表展示
-                    -->
+            <!--
+                列表展示
+            -->
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>                                   
@@ -28,7 +28,75 @@
                             </tr>
                             </thead>
                             <tbody>
-                                    商品列表
+                                 
+                                <%for(var i=0;i<list.length;i++){%>
+                                    <tr>
+                                        
+                                        <td><%=list[i].title%></td>
+                                        <td><%=list[i].goods_sn%></td>
+                                        <td><%=list[i].shop_price%></td>
+                                        <td><%=list[i].click_count%></td>    
+                                        
+                                        <td  class="text-center">
+    
+                                                <%if(list[i].status==1){%>
+    
+                                                        <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','status','<%=list[i]._id%>')" />
+    
+                                                <%}else{%>
+                                                        <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','status','<%=list[i]._id%>')" />
+                                                <%}%>
+    
+                                        </td>                                           
+                                        
+                                        <td  class="text-center">
+    
+                                            <%if(list[i].is_best==1){%>
+
+                                                    <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','is_best','<%=list[i]._id%>')" />
+
+                                            <%}else{%>
+                                                    <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','is_best','<%=list[i]._id%>')" />
+                                            <%}%>
+
+                                        </td> 
+                                        
+                                        <td  class="text-center">
+    
+                                            <%if(list[i].is_news==1){%>
+
+                                                    <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','is_news','<%=list[i]._id%>')" />
+
+                                            <%}else{%>
+                                                    <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','is_news','<%=list[i]._id%>')" />
+                                            <%}%>
+
+                                        </td> 
+
+                                        <td  class="text-center">
+    
+                                            <%if(list[i].is_hot==1){%>
+
+                                                    <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','is_hot','<%=list[i]._id%>')" />
+
+                                            <%}else{%>
+                                                    <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','is_hot','<%=list[i]._id%>')" />
+                                            <%}%>
+
+                                        </td> 
+
+
+                                        <td class="text-center"><span onclick="app.editNum(this,'Goods','sort','<%=list[i]._id%>')"><%=list[i].sort%></span></td>
+
+
+                                        <td class="text-center"><span onclick="app.editNum(this,'Goods','goods_number','<%=list[i]._id%>')"><%=list[i].goods_number%></span></td>
+    
+    
+                                        <td class="text-center"><a href="/admin/goods/edit?id=<%=list[i]._id%>">修改</a>　　<a  class="delete" href="/admin/delete?id=<%=list[i]._id%>&model=Goods">删除</a></td>
+                                    </tr>       
+                                <%}%>
+
+
                             </tbody>
                         </table>
                     </div>

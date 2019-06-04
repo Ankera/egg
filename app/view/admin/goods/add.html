@@ -34,7 +34,7 @@
                     <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"><a href="#general"  role="tab" data-toggle="tab">通用信息</a></li>
                             <li role="presentation"><a href="#detail" role="tab" data-toggle="tab">详细描述</a></li>
-                            <li role="presentation"><a href="#mix"  role="tab" data-toggle="tab">商品属性</a></li>
+                            <li role="presentation"><a href="#mix"  role="tab" data-toggle="tab">其他信息</a></li>
                             <li role="presentation"><a href="#attribute"  role="tab" data-toggle="tab">规格与包装</a></li>
                             <li role="presentation"><a href="#photo"  role="tab" data-toggle="tab">商品相册</a></li>              
                             
@@ -50,7 +50,7 @@
                                         <li> <span> 附属标题:</span> <input type="text" name="sub_title" class="input"/></li>
                                         <li>  <span>商品版本:</span> <input type="text" name="goods_version" class="input"/></li>                            
                                         <li>  <span>所属分类:</span> 
-                                            <select name="cate_id" id="cid">
+                                            <select name="cate_id" id="cate_id">
                                                 <%for(var i=0;i<goodsCate.length;i++){%>
                                                     <option value="<%=goodsCate[i].id%>"><%=goodsCate[i].title%></option>
                                                     <%for(var j=0;j<goodsCate[i].items.length;j++){%>
@@ -78,6 +78,7 @@
                                             <input type="checkbox" value="1" name="is_hot"/> 热销
                                             <input type="checkbox" value="1" name="is_new"/> 新品
                                          </li>
+                                        <li>  <span> 排　　序: </span><input type="text" name="sort" value="1000"/></li>
                                </ul>
 
                         </div>
@@ -123,7 +124,16 @@
                                             
                                         </li>
                                  
-                                       
+                                       <li> <span>Seo关键词:</span>
+                                            
+                                            <input type="text" name="goods_keywords" class="goods_keywords"/>  
+                                        
+                                        </li>
+
+                                        <li> <span>Seo描述:</span>                                                
+                                            <textarea name="goods_desc" id="goods_desc" cols="100" rows="2"></textarea>
+                                        
+                                        </li>
                                          
                                         
                                 </ul>
