@@ -24,6 +24,16 @@ class Goods_attrService extends Service {
         });
         return result;
     }
+
+    // 通过ID来查询
+    async getSingleDataByGoodsId(goods_id) {
+        let result = await this.app.mysql.select(TABLENAME.GOODS_ATTR, {
+            where: {
+                goods_id
+            }
+        });
+        return result;
+    }
 }
 
 module.exports = Goods_attrService;

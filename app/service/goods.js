@@ -35,6 +35,16 @@ class GoodsService extends Service {
         });
         return result;
     }
+
+     // 通过ID来查询
+     async getSingleDataById(id) {
+        let result = await this.app.mysql.select(TABLENAME.GOODS, {
+            where: {
+                id
+            }
+        });
+        return result;
+    }
 }
 
 module.exports = GoodsService;

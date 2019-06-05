@@ -41,10 +41,10 @@
     
                                                 <%if(list[i].status==1){%>
     
-                                                        <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','status','<%=list[i]._id%>')" />
+                                                        <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','status','<%=list[i].id%>')" />
     
                                                 <%}else{%>
-                                                        <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','status','<%=list[i]._id%>')" />
+                                                        <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','status','<%=list[i].id%>')" />
                                                 <%}%>
     
                                         </td>                                           
@@ -53,10 +53,10 @@
     
                                             <%if(list[i].is_best==1){%>
 
-                                                    <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','is_best','<%=list[i]._id%>')" />
+                                                    <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','is_best','<%=list[i].id%>')" />
 
                                             <%}else{%>
-                                                    <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','is_best','<%=list[i]._id%>')" />
+                                                    <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','is_best','<%=list[i].id%>')" />
                                             <%}%>
 
                                         </td> 
@@ -65,10 +65,10 @@
     
                                             <%if(list[i].is_news==1){%>
 
-                                                    <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','is_news','<%=list[i]._id%>')" />
+                                                    <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','is_news','<%=list[i].id%>')" />
 
                                             <%}else{%>
-                                                    <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','is_news','<%=list[i]._id%>')" />
+                                                    <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','is_news','<%=list[i].id%>')" />
                                             <%}%>
 
                                         </td> 
@@ -77,22 +77,22 @@
     
                                             <%if(list[i].is_hot==1){%>
 
-                                                    <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','is_hot','<%=list[i]._id%>')" />
+                                                    <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Goods','is_hot','<%=list[i].id%>')" />
 
                                             <%}else{%>
-                                                    <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','is_hot','<%=list[i]._id%>')" />
+                                                    <img src="/public/admin/images/no.gif"  onclick="app.changeStatus(this,'Goods','is_hot','<%=list[i].id%>')" />
                                             <%}%>
 
                                         </td> 
 
 
-                                        <td class="text-center"><span onclick="app.editNum(this,'Goods','sort','<%=list[i]._id%>')"><%=list[i].sort%></span></td>
+                                        <td class="text-center"><span onclick="app.editNum(this,'Goods','sort','<%=list[i].id%>')"><%=list[i].sort%></span></td>
 
 
-                                        <td class="text-center"><span onclick="app.editNum(this,'Goods','goods_number','<%=list[i]._id%>')"><%=list[i].goods_number%></span></td>
+                                        <td class="text-center"><span onclick="app.editNum(this,'Goods','goods_number','<%=list[i].id%>')"><%=list[i].goods_number%></span></td>
     
     
-                                        <td class="text-center"><a href="/admin/goods/edit?id=<%=list[i]._id%>">修改</a>　　<a  class="delete" href="/admin/delete?id=<%=list[i]._id%>&model=Goods">删除</a></td>
+                                        <td class="text-center"><a href="/admin/goods/edit?id=<%=list[i].id%>">修改</a>　　<a  class="delete" href="/admin/delete?id=<%=list[i].id%>&model=Goods">删除</a></td>
                                     </tr>       
                                 <%}%>
 

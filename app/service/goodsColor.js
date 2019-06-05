@@ -37,7 +37,7 @@ class GoodsColorService extends Service {
     }
 
      // 通过ID来查询
-     async getSingleDataById(id) {
+    async getSingleDataById(id) {
         let result = await this.app.mysql.select(TABLENAME.GOODS_COLOR, {
             where: {
                 id
