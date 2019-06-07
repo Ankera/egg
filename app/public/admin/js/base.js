@@ -14,7 +14,7 @@ var app = {
 
 	resizeIframe: function () {
 		let heights = document.documentElement.clientHeight - 100;
-		$("#rightMain").height(heights)
+		$("#rightMain").height(heights+200)
 		// document.getElementById('rightMain').height = heights;
 	},
 

@@ -24,7 +24,7 @@ class CommonService extends Service {
 
     /**
      * 更新状态
-     * @param {*} type 1代表管理员，2代表角色，3代表权限, 4轮播图, 5是商品管理类型， 6商品类型属性, 7商品分类, 8颜色
+     * @param {*} type 1代表管理员，2代表角色，3代表权限, 4轮播图, 5是商品管理类型， 6商品类型属性, 7商品分类, 8颜色, 9导航
      * @param {*} status 1取消， 0赞成
      * @param {*} id 
      */
@@ -55,6 +55,9 @@ class CommonService extends Service {
             case 8:
                 tableName = TABLENAME.GOODS_COLOR;
                 break;
+            case 9:
+                    tableName = TABLENAME.NAV;
+                    break;
         }
 
         let result = await this.app.mysql.update(tableName, {
@@ -69,7 +72,7 @@ class CommonService extends Service {
 
     /**
      * 
-     * @param {*} type type 1代表管理员，2代表角色，3代表权限, 4轮播图, 5是商品管理类型， 6商品类型属性, 7商品分类, 8颜色
+     * @param {*} type type 1代表管理员，2代表角色，3代表权限, 4轮播图, 5是商品管理类型， 6商品类型属性, 7商品分类, 8颜色, 9导航
      * @param {*} id 
      * @param {*} sort 排序
      */
@@ -99,6 +102,9 @@ class CommonService extends Service {
                 break;
             case 8:
                     tableName = TABLENAME.GOODS_COLOR;
+                    break;
+            case 9:
+                    tableName = TABLENAME.NAV;
                     break;
         }
 

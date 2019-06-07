@@ -59,14 +59,14 @@
                                                     </td>
                                                    
             
-                                                    <td class="text-center"><span onclick="app.editNum(this,'Nav','sort','<%=list[i].id%>')"><%=list[i].sort%></span></td>
+                                                    <td class="text-center"><span onclick="app.editNum(this, 9, '<%=list[i].id%>')"><%=list[i].sort%></span></td>
                                                     <td class="text-center">
             
                                                         <%if(list[i].status==1){%>            
-                                                                <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this,'Nav','status','<%=list[i].id%>')" />
+                                                                <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this, 9, 1,'<%=list[i].id%>')" />
             
                                                         <%}else{%>
-                                                                <img src="/public/admin/images/no.gif" onclick="app.changeStatus(this,'Nav','status','<%=list[i].id%>')" />
+                                                                <img src="/public/admin/images/no.gif" onclick="app.changeStatus(this, 9, 0,'<%=list[i].id%>')" />
                                                         <%}%>
             
                                                     </td>                                                                    
