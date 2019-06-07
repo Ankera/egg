@@ -26,7 +26,7 @@ class ArticleService extends Service {
     }
 
     // 通过id来查询
-    async getSingleDataByid(id){
+    async getSingleDataById(id){
         let result = await this.app.mysql.select(TABLENAME.ARTICLE, {
             where: {
                 id

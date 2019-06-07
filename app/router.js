@@ -127,4 +127,8 @@ module.exports = app => {
   router.post('/admin/article/doEdit', controller.admin.article.doEdit);
   router.post('/admin/article/doAdd', controller.admin.article.doAdd);
   router.get('/admin/article/delete', controller.admin.article.delete);
+
+  // 商店设置
+  router.get('/admin/setting', controller.admin.setting.index);
+  router.post('/admin/setting/doEdit', controller.admin.setting.doEdit);
 };

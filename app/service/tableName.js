@@ -13,7 +13,8 @@ const TABLENAME = {
     GOODS_ATTR: "goods_attr",
     NAV: "nav",
     ARTICLE_CATE: "article_cate",
-    ARTICLE: "article"
+    ARTICLE: "article",
+    SETTING: "setting"
 }
 
 module.exports = TABLENAME;

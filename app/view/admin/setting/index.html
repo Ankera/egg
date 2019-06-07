@@ -1,0 +1,59 @@
+<%- include ../public/page_header.html %>
+
+
+    <div class="panel panel-default">              
+        <div class="panel-heading">
+            商店设置
+        </div>
+        
+        <div class="panel-body">
+            <div class="table-responsive input-form">
+                <form action="/admin/setting/doEdit?_csrf=<%=csrf%>" method="post">
+                    <ul class="form_input">
+                        
+                        <li>  <span>网站标题:</span> <input type="text" class="input" name="site_title" value="<%=list.site_title%>"/></li>
+
+                        <li> <span>网站logo:</span>
+                            <input type="file" name="_file_focus_img" onchange="app.uploadFile(this, '<%=csrf%>')"/>
+                            <input type="hidden" name="site_logo" value="<%=list.site_logo%>" id="_oss_upload_image_hidden"/>
+                    　　　　 <img class="pic" src="<%=list.site_logo%>" id="_oss_upload_image"/>                             
+                         </li>                        
+
+                        <li>  <span>网站关键词:</span> <input type="text"  class="input" name="site_keywords"  value="<%=list.site_keywords%>"/></li>
+
+                        <li> <span>网站描述:</span>  <textarea name="site_description" style="width:600px;"><%=list.site_description%></textarea></li>
+
+                        <li> <span>商品默认图片:</span>  
+                            <input type="file" name="_file_focus_img_other" onchange="app.uploadFile(this, '<%=csrf%>', 2)"/>
+                            <input type="hidden" name="no_picture" value="<%=list.no_picture%>" id="_oss_upload_image_hidden_other"/>
+                    　　　　 <img class="pic" src="<%=list.no_picture%>" id="_oss_upload_image_other"/>  
+                        
+                        </li> 
+                         <li> <span>备案信息:</span> <input type="text" class="input" name="site_icp" value="<%=list.site_icp%>"/></li>
+                         <li> <span>网站电话:</span> <input type="text" class="input" name="site_tel" value="<%=list.site_tel%>"/></li>
+
+                         <li> <span>搜索关键词:</span> <input type="text" class="input" name="search_keywords" value="<%=list.search_keywords%>"/></li>
+
+                         <li> <span>统计代码:</span> <input type="text" class="input" name="tongji_code" value="<%=list.tongji_code%>"/></li>
+
+                         
+
+                         
+                         
+                        <li>
+                            <br/>
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </li>
+
+                    </ul>
+
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

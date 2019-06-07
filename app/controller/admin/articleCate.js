@@ -56,7 +56,7 @@ class ArticleCateController extends BaseController {
         let ctx = this.ctx,
             { id } = ctx.query;
         let resultCate = await ctx.service.articeCate.getDataByPid(0);
-        let result = await ctx.service.articeCate.getSingleDataByid(id);
+        let result = await ctx.service.articeCate.getSingleDataById(id);
         await ctx.render('admin/articleCate/edit.html', {
             list: result[0],
             cateList: resultCate,

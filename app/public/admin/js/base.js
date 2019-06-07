@@ -70,7 +70,7 @@ var app = {
 		})
 	},
 
-	uploadFile: function (el, csrf) {
+	uploadFile: function (el, csrf, type) {
 		let formData = new FormData();
 		let file = $(el)[0].files[0];
 		formData.append("file", file);
@@ -85,12 +85,21 @@ var app = {
 			dataType: "json",
 			success: function (data) {
 				if (data.status) {
-					$('#_oss_upload_image').attr("src", data.link);
-					$('#_oss_upload_image').css({
-						"display": "block",
-						"maxWidth": "240px"
-					});
-					$('#_oss_upload_image_hidden').attr("value", data.link);
+					if (type == 2) { // 等于2只在商店设置里面用一次
+						$('#_oss_upload_image_other').attr("src", data.link);
+						$('#_oss_upload_image_other').css({
+							"display": "block",
+							"maxWidth": "240px"
+						});
+						$('#_oss_upload_image_hidden_other').attr("value", data.link);
+					} else {
+						$('#_oss_upload_image').attr("src", data.link);
+						$('#_oss_upload_image').css({
+							"display": "block",
+							"maxWidth": "240px"
+						});
+						$('#_oss_upload_image_hidden').attr("value", data.link);
+					}
 				}
 			}
 		});
