@@ -238,11 +238,20 @@ input[type=file]{
     float: left;    
     margin-right: 10px;
     border-bottom: none;
+
+    position: relative;
 }
 
-.goods_image_list li .color_list{
+.goods_image_list li:hover .goods_image_delete{
+    width: 40px;
+    height: 40px;
+    background: url('../webuploader/images/x_alt.png') no-repeat center center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+}
 
-    
+.goods_image_list li .color_list{   
     margin-top:20px;
-
 }

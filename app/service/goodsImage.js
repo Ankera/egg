@@ -29,7 +29,8 @@ class Goods_imageService extends Service {
     async getSingleDataByGoodsId(goods_id) {
         let result = await this.app.mysql.select(TABLENAME.GOODS_IMAGE, {
             where: {
-                goods_id
+                goods_id,
+                is_delete: 1
             }
         });
         return result;

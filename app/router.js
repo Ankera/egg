@@ -99,4 +99,8 @@ module.exports = app => {
   router.get('/admin/goods/edit', controller.admin.goods.edit);
   router.post('/admin/goods/doEdit', controller.admin.goods.doEdit);
   router.get('/admin/goods/delete', controller.admin.goods.delete);
+  router.post('/admin/goods/changeGoodsImageColor', controller.admin.goods.changeGoodsImageColor);//修改商品颜色
+  router.get('/admin/goods/goodsImageRemove', controller.admin.goods.goodsImageRemove);
+  // 商品专有修改价格，点击量，状态，精品，新品，热销，排序，库存方法
+  router.get('/admin/goods/editGoodsCommon', controller.admin.goods.editGoodsCommon);
 };

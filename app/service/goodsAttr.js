@@ -25,6 +25,13 @@ class Goods_attrService extends Service {
         return result;
     }
 
+    async deleteByGoodsId(goods_id) {
+        let result = await this.app.mysql.delete(TABLENAME.GOODS_ATTR, {
+            goods_id
+        });
+        return result;
+    }
+
     // 通过ID来查询
     async getSingleDataByGoodsId(goods_id) {
         let result = await this.app.mysql.select(TABLENAME.GOODS_ATTR, {

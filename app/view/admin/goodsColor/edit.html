@@ -16,11 +16,9 @@
                                 <input type="hidden" name="id" value="<%=list.id%>" />
                                 <li>  <span>颜色名称:</span> <input type="text" name="color_name" value="<%=list.color_name%>"/></li>
 
-                               
-
                                 <li>
                                     <span>颜色值:</span>
-                                    <input type="text" id="cp1" value="<%=list.color_value%>" name="color_value"/>
+                                    <input type="text" class="jscolor" value="<%=list.color_value%>" name="color_value"/>
                                 </li>
 
                                 <li>   <span>状　　态: </span>
@@ -44,14 +42,6 @@
         </div>
     </div>
 </div>
-<script src="https://libs.baidu.com/jquery/1.7.0/jquery.min.js"></script>
-<script src="http://www.jq22.com/demo/colorpicker-150209223358/jquery.colorpicker.js"></script>
-<script>
-     $(function(){
-        $("#cp1").colorpicker({
-            fillcolor:true
-        });
-    });
-</script>
+<script src="/public/admin/js/jscolor.js"></script>
 </body>
 </html>

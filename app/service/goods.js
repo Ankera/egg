@@ -30,20 +30,37 @@ class GoodsService extends Service {
         page = await ctx.service.common.returnPage(page);
         pageSize = await ctx.service.common.returnPageSize(pageSize);
         let result = await this.app.mysql.select(TABLENAME.GOODS, {
+            where: {
+                is_delete:1
+            },
             limit: pageSize,
             offset: (page - 1) * pageSize
         });
         return result;
     }
 
-     // 通过ID来查询
-     async getSingleDataById(id) {
+    // 通过ID来查询
+    async getSingleDataById(id) {
         let result = await this.app.mysql.select(TABLENAME.GOODS, {
             where: {
-                id
+                id,
+                is_delete:1
             }
         });
         return result;
+    }
+
+    // 查询对应的颜色
+    async queryGoodsColorById(id) {
+        let _sql1 = `SELECT goods_color FROM ${TABLENAME.GOODS} WHERE id = ${id} AND is_delete = 1`;
+        let result1 = await this.app.mysql.query(_sql1);
+        if (result1 && result1.length > 0 && result1[0].goods_color) {
+            let _sql2 = `SELECT * FROM ${TABLENAME.GOODS_COLOR} WHERE id IN(${JSON.parse(result1[0].goods_color).join(',')})`;
+            let result2 = await this.app.mysql.query(_sql2);
+            return result2;
+        } else {
+            return []
+        }
     }
 }
 
