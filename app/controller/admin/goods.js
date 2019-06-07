@@ -5,17 +5,26 @@ const BaseController = require('./base.js');
 class GoodsController extends BaseController {
     async index() {
         let ctx = this.ctx,
+            elt = this.config.CONSTANT,
             result = [],
-            { page, pageSize } = ctx.query;
-        let total = await ctx.service.goods.getTotal();
+            { page, pageSize, keyword } = ctx.query;
+            
+        if(!page){
+            page = elt.PAGE
+        }
+        if(!pageSize){
+            pageSize = elt.PAGESIZE
+        }
+        let total = await ctx.service.goods.getTotal(keyword);
         if (total > 0) {
-            result = await ctx.service.goods.getAllList(page, pageSize);
+            result = await ctx.service.goods.getAllList(page, pageSize, keyword);
         }
         await this.ctx.render('admin/goods/index', {
             list: result,
             total,
             page,
-            pageSize
+            pageSize,
+            keyword,
         });
     }
 

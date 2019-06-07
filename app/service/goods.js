@@ -25,23 +25,25 @@ class GoodsService extends Service {
         return result;
     }
 
-    async getTotal(){
-        let _sql = `SELECT COUNT(*) AS TOTAL FROM ${TABLENAME.GOODS}`;
+    async getTotal(keyword) {
+        let _sql = `SELECT COUNT(*) AS TOTAL FROM ${TABLENAME.GOODS} WHERE is_delete = 1 `;
+        if (keyword) {
+            _sql += ` AND title LIKE '%${keyword}%' `;
+        }
         let result = await this.app.mysql.query(_sql);
         return result[0].TOTAL;
     }
 
-    async getAllList(page, pageSize) {
+    async getAllList(page, pageSize, keyword) {
         let ctx = this.ctx;
         page = await ctx.service.common.returnPage(page);
         pageSize = await ctx.service.common.returnPageSize(pageSize);
-        let result = await this.app.mysql.select(TABLENAME.GOODS, {
-            where: {
-                is_delete:1
-            },
-            limit: pageSize,
-            offset: (page - 1) * pageSize
-        });
+        let _sql = `SELECT * FROM ${TABLENAME.GOODS} WHERE is_delete = 1 `;
+        if (keyword) {
+            _sql += ` AND title LIKE '%${keyword}%' `
+        }
+        _sql += `LIMIT ${(page - 1) * pageSize}, ${pageSize} `;
+        let result = await this.app.mysql.query(_sql);
         return result;
     }
 
@@ -50,7 +52,7 @@ class GoodsService extends Service {
         let result = await this.app.mysql.select(TABLENAME.GOODS, {
             where: {
                 id,
-                is_delete:1
+                is_delete: 1
             }
         });
         return result;
