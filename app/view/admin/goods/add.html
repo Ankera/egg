@@ -254,7 +254,6 @@
                 $('#photoLib').diyUpload({
                     url:`/admin/uploadFile?_csrf=${app.getCookie('csrfToken')}`,                    
                     success:function( response ) {
-                        console.log(response);
                         photoStr='<input type="hidden" name="goods_image_list[]" value='+response.link+' />';
                         $('#photoList').append(photoStr);
                     },

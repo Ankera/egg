@@ -5,9 +5,9 @@ const BaseController = require('./base.js');
 class ArticleCateController extends BaseController {
     async index() {
         let ctx = this.ctx,
-            result = await ctx.service.articelCate.getDataByPid(0);
+            result = await ctx.service.articeCate.getDataByPid(0);
         for (let i = 0; i < result.length; i++) {
-            let itemResults = await this.ctx.service.articelCate.getDataByPid(result[i].id);
+            let itemResults = await this.ctx.service.articeCate.getDataByPid(result[i].id);
             result[i].items = itemResults;
         }
         await this.ctx.render('admin/articleCate/index', {
@@ -17,7 +17,7 @@ class ArticleCateController extends BaseController {
 
     async add() {
         let ctx = this.ctx,
-            result = await ctx.service.articelCate.getDataByPid(0);
+            result = await ctx.service.articeCate.getDataByPid(0);
         await this.ctx.render('admin/articleCate/add.html', {
             cateList: result
         })
@@ -35,7 +35,7 @@ class ArticleCateController extends BaseController {
                 sort,
                 status
             } = ctx.request.body;
-        let result = await ctx.service.articelCate.insert({
+        let result = await ctx.service.articeCate.insert({
             title,
             pid,
             sub_title,
@@ -55,8 +55,8 @@ class ArticleCateController extends BaseController {
     async edit() {
         let ctx = this.ctx,
             { id } = ctx.query;
-        let resultCate = await ctx.service.articelCate.getDataByPid(0);
-        let result = await ctx.service.articelCate.getSingleDataByid(id);
+        let resultCate = await ctx.service.articeCate.getDataByPid(0);
+        let result = await ctx.service.articeCate.getSingleDataByid(id);
         await ctx.render('admin/articleCate/edit.html', {
             list: result[0],
             cateList: resultCate
@@ -76,7 +76,7 @@ class ArticleCateController extends BaseController {
                 sort,
                 status
             } = ctx.request.body;
-        let result = await ctx.service.articelCate.update({
+        let result = await ctx.service.articeCate.update({
             title,
             pid,
             sub_title,

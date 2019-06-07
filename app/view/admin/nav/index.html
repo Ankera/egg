@@ -1,11 +1,5 @@
 <%- include ../public/page_header.html %>
 
-
-    <!-- 引入分页插件 -->
-
-    <script src="/public/admin/js/jqPaginator.js"></script>
-
-
     <div class="panel panel-default">              
             <div class="panel-heading clear">
                     <span>网站导航</span> <a href="/admin/nav/add" class="btn btn-primary fr">增加导航</a>
@@ -95,7 +89,7 @@
             pageCurrent: Number('<%=page%>'),  //  当前页
             maxBtnNum: 5,   // 最多按钮个数  （最少5个）
             change:function(page){   // 页数变化回调函数（返回当前页码）
-                window.location.href = `/admin/goods?page=${page}&pageSize=50`
+                window.location.href = `/admin/nav?page=${page}&pageSize=50`
             }, 
         })
     })

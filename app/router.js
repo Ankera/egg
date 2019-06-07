@@ -119,4 +119,12 @@ module.exports = app => {
   router.post('/admin/articleCate/doEdit', controller.admin.articleCate.doEdit);
   router.post('/admin/articleCate/doAdd', controller.admin.articleCate.doAdd);
   router.get('/admin/articleCate/delete', controller.admin.articleCate.delete);
+
+  // 文章列表
+  router.get('/admin/article', controller.admin.article.index);
+  router.get('/admin/article/add', controller.admin.article.add);
+  router.get('/admin/article/edit', controller.admin.article.edit);
+  router.post('/admin/article/doEdit', controller.admin.article.doEdit);
+  router.post('/admin/article/doAdd', controller.admin.article.doAdd);
+  router.get('/admin/article/delete', controller.admin.article.delete);
 };

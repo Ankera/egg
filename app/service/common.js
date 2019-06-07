@@ -63,6 +63,9 @@ class CommonService extends Service {
             case 10:
                     tableName = TABLENAME.ARTICLE_CATE;
                     break;
+            case 11:
+                    tableName = TABLENAME.ARTICLE;
+                    break; 
         }
 
         let result = await this.app.mysql.update(tableName, {
@@ -116,6 +119,9 @@ class CommonService extends Service {
             case 10:
                 tableName = TABLENAME.ARTICLE_CATE;
                 break;
+            case 11:
+                    tableName = TABLENAME.ARTICLE;
+                    break;
         }
 
         let result = await this.app.mysql.update(tableName, {

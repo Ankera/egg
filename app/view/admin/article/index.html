@@ -1,0 +1,80 @@
+<%- include ../public/page_header.html %>
+
+            <!-- 分页插件 -->
+            <script src="/public/admin/js/jqPaginator.js"></script>
+
+            <div class="panel panel-default">              
+                    <div class="panel-heading clear">
+                        <span>文章分类列表</span> <a href="/admin/article/add" class="btn btn-primary fr">增加文章</a>
+                    </div>
+                    <div class="panel-body">
+            <!--
+                列表展示
+            -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="th">
+                                <th>文章名称</th>
+                                <th>文章图片</th>                                
+                                <th>所属分类</th>   
+                                <th>增加日期</th>   
+                                <th class="text-center">排序</th> 
+                                <th class="text-center">状态</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                    <%for(var i=0;i<list.length;i++){%>
+                                        <tr>
+                                                <td><%=list[i].title%></td>      
+                                                <td><img class="pic" src="<%=list[i].article_img%>" /></td> 
+
+                                                <td><%=list[i].articleCateTitle%></td>      
+                                                <td><%=helper.formatTime(list[i].add_time)%></td>         
+                                                <td class="text-center"><span onclick="app.editNum(this,'Article','sort','<%=list[i].id%>')"><%=list[i].sort%></span></td>
+                                                <td class="text-center">
+        
+                                                    <%if(list[i].status==1){%>
+        
+                                                            <img src="/public/admin/images/yes.gif" onclick="app.changeStatus(this, 11, 1,'<%=list[i].id%>')" />
+        
+                                                    <%}else{%>
+                                                            <img src="/public/admin/images/no.gif" onclick="app.changeStatus(this, 11, 0,'<%=list[i].id%>')" />
+                                                    <%}%>        
+                                                </td>                                                                    
+                                                <td class="text-center">　<a href="/admin/article/edit?id=<%=list[i].id%>">修改</a>　<a class="delete" href="/admin/delete?model=Article&id=<%=list[i].id%>">删除</a></td>
+                                        </tr>            
+                                    <%}%>
+                                
+                            </tbody>
+                        </table>
+
+
+                        <div class="page_s1 fr"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+<link rel="stylesheet" href="/public/admin/pagination/pagination.css">
+<script type="text/javascript" charset="utf-8" src="/public/admin/pagination/pagination.js"></script>
+<script>
+    $(function(){
+        let page_s1 = createPage('.page_s1');
+        // 设置分页
+        setPage(page_s1,{
+            pageTotal: Number('<%=total%>'), // 数据总条数   
+            pageSize: Number('<%=pageSize%>'),    // 每页显示条数
+            pageCurrent: Number('<%=page%>'),  //  当前页
+            maxBtnNum: 5,   // 最多按钮个数  （最少5个）
+            change:function(page){   // 页数变化回调函数（返回当前页码）
+                window.location.href = `/admin/article?page=${page}&pageSize=50`
+            }, 
+        })
+    })
+</script>
+
+</body>
+</html>

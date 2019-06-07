@@ -1,0 +1,116 @@
+<%- include ../public/page_header.html %>
+
+
+    <!-- 富文本编辑器 -->
+    <link href="/public/admin/wysiwyg-editor/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Include Editor style. -->
+    <link href="/public/admin/wysiwyg-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="/public/admin/wysiwyg-editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+    <!-- 引入jquery -->
+    <!-- Include Editor JS files. -->
+    <script type="text/javascript" src="/public/admin/wysiwyg-editor/js/froala_editor.pkgd.min.js"></script>
+
+    <script type="text/javascript" src="/public/admin/wysiwyg-editor/js/zh_cn.js"></script>
+
+    <div class="panel panel-default">              
+        <div class="panel-heading">
+            增加文章
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive input-form">
+                <form action="/admin/article/doAdd?_csrf=<%=csrf%>" method="post" class="news_content">
+
+
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#general"  role="tab" data-toggle="tab">通用信息</a></li>
+                            <li role="presentation"><a href="#detail" role="tab" data-toggle="tab">详细描述</a></li>                                                     
+                    </ul>
+                    
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="general">
+
+                            <ul class="form_input">                            
+
+                                    <li>  <span>文章标题:</span> <input type="text" name="title" class="input"/></li>  
+                                    
+                                    <li>  <span>所属分类:</span>                         
+                                        <select name="cate_id" id="cate_id">                                   
+                                                   
+                                          
+
+                                            <%for(var i=0;i<cateList.length;i++){%>
+
+                                                <option value="<%=cateList[i].id%>"><%=cateList[i].title%></option>
+                                              
+                                                <%for(var j=0;j<cateList[i].items.length;j++){%>
+
+                                                    <option value="<%=cateList[i].items[j].id%>">----<%=cateList[i].items[j].title%></option>
+
+                                                <%}%>
+
+                                             <%}%>
+        
+                                            
+                                        </select>
+                                    </li>  
+                
+                                    <li> <span>封面图片:</span>  
+                                        <input type="file" name="_file_focus_img" onchange="app.uploadFile(this, '<%=csrf%>')"/>
+                                        <input type="hidden" name="article_img" value="" id="_oss_upload_image_hidden"/>
+                                        <img src="" id="_oss_upload_image"/>
+                                    </li>    
+                
+                                    <li>  <span>跳转地址:</span>  <input type="text" name="link" class="input"/></li> 
+                
+                                    <li>  <span>Seo关键词: </span><input type="text" name="keywords" class="input"/></li>
+                
+                                    <li>  <span>Seo描述:</span> <textarea name="description" id="description" cols="84" rows="4"></textarea></li>                   
+        
+                                    <li>  <span>排　　序:</span> <input type="text" name="sort" value="100"/></li>       
+                                    
+                                    <li>  <span>状　　态:</span> <input type="radio" name="status" checked value="1" id="a"/> <label for="a">显示</label>    <input type="radio" name="status" value="0" id="b"/><label for="b">隐藏</label> 　</li>
+                                    
+                
+                            </ul>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="detail">
+
+                            <textarea name="content" id="content" cols="100" rows="8"></textarea>
+                        </div>
+
+                        <br />
+
+                        
+
+                        <button type="submit" class="btn btn-success goods_content_btn">提交</button>
+    
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+
+        <script>        
+             $(function() {
+                $('#content').froalaEditor({
+                    height: 300,    //给编辑器设置默认的高度
+                    language: 'zh_cn',   
+                    imageUploadURL: `/admin/uploadFile?_csrf=${app.getCookie('csrfToken')}`,
+                    //根据不同的分辨率加载不同的配置
+                    toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'embedly', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'],
+                    toolbarButtonsMD: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'embedly', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo'],
+                    toolbarButtonsSM: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'embedly', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html', '|', 'undo', 'redo']
+                });
+            });
+        </script>
+    </div>
+
+</body>
+</html>
