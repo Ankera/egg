@@ -10,7 +10,8 @@ const TABLENAME = {
     GOODS_COLOR: "goods_color",
     GOODS: "goods",
     GOODS_IMAGE: "goods_image",
-    GOODS_ATTR: "goods_attr"
+    GOODS_ATTR: "goods_attr",
+    NAV: "nav"
 }
 
 module.exports = TABLENAME;

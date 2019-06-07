@@ -103,4 +103,12 @@ module.exports = app => {
   router.get('/admin/goods/goodsImageRemove', controller.admin.goods.goodsImageRemove);
   // 商品专有修改价格，点击量，状态，精品，新品，热销，排序，库存方法
   router.get('/admin/goods/editGoodsCommon', controller.admin.goods.editGoodsCommon);
+
+  //导航模块
+  router.get('/admin/nav', controller.admin.nav.index);
+  router.get('/admin/nav/add', controller.admin.nav.add);
+  router.get('/admin/nav/edit', controller.admin.nav.edit);
+  router.post('/admin/nav/doEdit', controller.admin.nav.doEdit);
+  router.post('/admin/nav/doAdd', controller.admin.nav.doAdd);
+  router.get('/admin/nav/delete', controller.admin.nav.delete);
 };
