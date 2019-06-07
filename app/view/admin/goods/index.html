@@ -13,6 +13,7 @@
                         <table class="table table-bordered">
                             <thead>                                   
                             <tr class="th">
+                                <th>编号</th>
                                 <th>商品名称</th>
                                 <th>货号</th>
                                 <th>价格</th>  
@@ -31,7 +32,7 @@
                                  
                                 <%for(let i=0;i<list.length;i++){%>
                                     <tr>
-                                        
+                                        <th><%=(i+1)+(page-1)*pageSize%></th>
                                         <td><%=list[i].title%></td>
                                         <td><%=list[i].goods_sn%></td>
                                         <td><span onclick="app.editGoodsCommon(this, 1, '<%=list[i].id%>')"><%=list[i].shop_price%></span></td>
@@ -98,10 +99,26 @@
 
                             </tbody>
                         </table>
+                        <div class="page_s1"></div>
                     </div>
                 </div>
             </div>
-
-
 </body>
+<link rel="stylesheet" href="/public/admin/pagination/pagination.css">
+<script type="text/javascript" charset="utf-8" src="/public/admin/pagination/pagination.js"></script>
+<script>
+    $(function(){
+        let page_s1 = createPage('.page_s1');
+        // 设置分页
+        setPage(page_s1,{
+            pageTotal: Number('<%=total%>'), // 数据总条数   
+            pageSize: Number('<%=pageSize%>'),    // 每页显示条数
+            pageCurrent: Number('<%=page%>'),  //  当前页
+            maxBtnNum: 5,   // 最多按钮个数  （最少5个）
+            change:function(page){   // 页数变化回调函数（返回当前页码）
+                window.location.href = `/admin/goods?page=${page}&pageSize=50`
+            }, 
+        })
+    })
+</script>
 </html>

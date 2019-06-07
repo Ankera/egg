@@ -25,6 +25,12 @@ class GoodsService extends Service {
         return result;
     }
 
+    async getTotal(){
+        let _sql = `SELECT COUNT(*) AS TOTAL FROM ${TABLENAME.GOODS}`;
+        let result = await this.app.mysql.query(_sql);
+        return result[0].TOTAL;
+    }
+
     async getAllList(page, pageSize) {
         let ctx = this.ctx;
         page = await ctx.service.common.returnPage(page);

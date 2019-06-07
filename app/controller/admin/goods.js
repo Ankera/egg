@@ -4,9 +4,18 @@ const BaseController = require('./base.js');
 
 class GoodsController extends BaseController {
     async index() {
-        let result = await this.ctx.service.goods.getAllList();
+        let ctx = this.ctx,
+            result = [],
+            { page, pageSize } = ctx.query;
+        let total = await ctx.service.goods.getTotal();
+        if (total > 0) {
+            result = await ctx.service.goods.getAllList(page, pageSize);
+        }
         await this.ctx.render('admin/goods/index', {
-            list: result
+            list: result,
+            total,
+            page,
+            pageSize
         });
     }
 
@@ -213,7 +222,7 @@ class GoodsController extends BaseController {
             attr_value_list,
             goods_image_list
         } = ctx.request.body;
-        
+
         let updateResult = await ctx.service.goods.update({
             title,
             sub_title,
@@ -371,7 +380,7 @@ class GoodsController extends BaseController {
                 break;
         }
         let result = await ctx.service.goods.update(_obj, id);
-        
+
         if (result.affectedRows < 0) {
             ctx.body = { success: `${_name}修改失败`, status: false }
         } else {

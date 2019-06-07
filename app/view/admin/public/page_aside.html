@@ -9,7 +9,11 @@
 
                         <%for(var j=0;j<asideList[i].items.length;j++){%> 
                             <%if((asideList[i].items[j].checked && asideList[i].items[j].type!=3) || (userinfo.is_super==1 && asideList[i].items[j].type!=3)){%>
-                                <li  class="list-group-item"> <a href="<%=asideList[i].items[j].url%>" target="rightMain">  <%=asideList[i].items[j].action_name %></a></li>
+                                <li  class="list-group-item"> 
+                                    <a href="<%=asideList[i].items[j].url%>?page=1&pageSize=50" target="rightMain">
+                                        <%=asideList[i].items[j].action_name %>
+                                    </a>
+                                </li>
                             <%}%>
                         <%}%>
                 </ul>
