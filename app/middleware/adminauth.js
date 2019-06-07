@@ -9,7 +9,7 @@ module.exports = options => {
 
         // 定义全局 csrf 变量
         ctx.state.csrf = ctx.csrf;
-
+        ctx.state.prevPage =ctx.request.headers['referer'];   //上一页的地址
         let pathname = ctx.request.url;
         pathname = url.parse(pathname).pathname;
 

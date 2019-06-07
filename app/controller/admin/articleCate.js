@@ -59,7 +59,8 @@ class ArticleCateController extends BaseController {
         let result = await ctx.service.articeCate.getSingleDataByid(id);
         await ctx.render('admin/articleCate/edit.html', {
             list: result[0],
-            cateList: resultCate
+            cateList: resultCate,
+            prevPage:this.ctx.state.prevPage
         })
     }
 
@@ -74,7 +75,8 @@ class ArticleCateController extends BaseController {
                 keywords,
                 description,
                 sort,
-                status
+                status,
+                prevPage
             } = ctx.request.body;
         let result = await ctx.service.articeCate.update({
             title,
@@ -87,7 +89,8 @@ class ArticleCateController extends BaseController {
             status
         }, id);
         if (result && result.affectedRows > 0) {
-            await this.success('/admin/articleCate', '修改文章分类成功');
+            // await this.success('/admin/articleCate', '修改文章分类成功');
+            await this.success(prevPage, '修改文章分类成功'); // 跳转上一页
         } else {
             await this.error('/admin/articleCate', '修改分类增加失败~~~');
         }

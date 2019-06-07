@@ -73,7 +73,8 @@ class ArticleController extends BaseController {
         let editResult = await ctx.service.article.getSingleDataByid(id);
         await this.ctx.render('admin/article/edit.html', {
             cateList: result,
-            list: editResult[0]
+            list: editResult[0],
+            prevPage:this.ctx.state.prevPage
         });
     }
 
@@ -89,7 +90,8 @@ class ArticleController extends BaseController {
                 description,
                 content,
                 sort,
-                status
+                status,
+                prevPage
             } = ctx.request.body;
         let result = await ctx.service.article.update({
             title,
@@ -102,9 +104,10 @@ class ArticleController extends BaseController {
             sort,
             status
         }, id);
-        console.log(ctx.request.body)
+        
         if (result && result.affectedRows > 0) {
-            await this.success('/admin/article', '修改文章成功');
+            // await this.success('/admin/article', '修改文章成功');
+            await this.success(prevPage, '修改文章成功'); // 跳转上一页
         } else {
             await this.error('/admin/article', '修改分类失败~~~');
         }
