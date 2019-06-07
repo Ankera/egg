@@ -11,7 +11,9 @@ const TABLENAME = {
     GOODS: "goods",
     GOODS_IMAGE: "goods_image",
     GOODS_ATTR: "goods_attr",
-    NAV: "nav"
+    NAV: "nav",
+    ARTICLE_CATE: "article_cate",
+    ARTICLE: "article"
 }
 
 module.exports = TABLENAME;

@@ -14,13 +14,18 @@ var app = {
 
 	resizeIframe: function () {
 		let heights = document.documentElement.clientHeight - 100;
-		$("#rightMain").height(heights+200)
+		$("#rightMain").height(heights)
 		// document.getElementById('rightMain').height = heights;
 	},
 
 	toggleAside: function () {
 		// 临时关闭
-		$('.aside>li:nth-child(1) ul,.aside>li:nth-child(2) ul,.aside>li:nth-child(3) ul').hide();
+		$(` .aside>li:nth-child(1) ul,
+			.aside>li:nth-child(2) ul,
+			.aside>li:nth-child(3) ul,
+			.aside>li:nth-child(4) ul,
+			.aside>li:nth-child(5) ul,
+			.aside>li:nth-child(6) ul`).hide();
 
 		$('.aside h4').click(function () {
 			if ($(this).find('span').hasClass('nav_close')) {
