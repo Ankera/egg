@@ -45,6 +45,17 @@ class FocusService extends Service {
         });
         return result;
     }
+
+    // 通过 type 来查询可用状态
+    async queryDataByType(type){
+        let result = await this.app.mysql.select(TABLENAME.FOCUS, {
+            where: {
+                type,
+                status: 1
+            }
+        });
+        return result;
+    }
 }
 
 module.exports = FocusService;

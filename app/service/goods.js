@@ -70,6 +70,13 @@ class GoodsService extends Service {
             return []
         }
     }
+
+    // 通过多个 id来查询
+    async queryDataByBatchId(batch_id) {
+        let _sql = `SELECT * FROM ${TABLENAME.GOODS} WHERE id IN(${batch_id})`;
+        let result = await this.app.mysql.query(_sql);
+        return result;
+    }
 }
 
 module.exports = GoodsService;

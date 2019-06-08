@@ -122,6 +122,7 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .banner_y .nav ul{padding: 20px 0;position:relative;}
 .banner_y .nav ul>li{display: block;width: 174px;height: 40px;line-height:40px;font-size: 14px;padding: 0 30px;}
 .banner_y .nav ul>li .pop{width: 530px;height: 460px;background: #fff;position:absolute;left:234px;top:0px;display: none;}
+.banner_y .nav ul>li:hover {background-color: #ff6700}
 .banner_y .nav ul>li:hover .pop{display: block;box-shadow: 2px 3px 5px #ccc; border-top: 1px solid #ccc;}
 .banner_y .nav ul>li .pop .cate_list{height: 460px;background: #fff;}
 .banner_y .nav ul>li .pop .cate_list li{margin-bottom: 3px; width: 265px; float: left;}
@@ -176,13 +177,10 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 /*修改轮播图*/
 
 .swiper-button-prev{
-
-	background:url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23999999'%2F><%2Fsvg>") no-repeat left center!important;
-	   
+	background:url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23999999'%2F><%2Fsvg>") no-repeat left center !important;
 }
 .swiper-button-next{
-	background:url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23999999'%2F><%2Fsvg>") no-repeat left center!important;
-  
+	background: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23999999'%2F><%2Fsvg>") no-repeat left center !important;
 }
 
 .swiper-pagination-bullet{

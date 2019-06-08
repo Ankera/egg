@@ -32,7 +32,8 @@ class AccessService extends Service {
     async getModuleByModuleId(module_id = 0){
         let result = await this.app.mysql.select(TABLENAME.ACCESS, {
             where: {
-                module_id
+                module_id,
+                is_delete: 1
             },
             orders: [["sort","ASC"]]
         });
@@ -53,7 +54,8 @@ class AccessService extends Service {
     async getSingleDataByUrl(url){
         let result = await this.app.mysql.select(TABLENAME.ACCESS, {
             where: {
-                url
+                url,
+                is_delete: 1
             }
         });
         return result;

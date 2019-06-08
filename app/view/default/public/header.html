@@ -18,27 +18,17 @@
 		<header>
 			<div class="top center">
 				<div class="left fl">
-					<ul>
-						<li><a href="http://www.mi.com/" target="_blank">小米商城</a></li>
-						<li>|</li>
-						<li><a href="">MIUI</a></li>
-						<li>|</li>
-						<li><a href="">米聊</a></li>
-						<li>|</li>
-						<li><a href="">游戏</a></li>
-						<li>|</li>
-						<li><a href="">多看阅读</a></li>
-						<li>|</li>
-						<li><a href="">云服务</a></li>
-						<li>|</li>
-						<li><a href="">金融</a></li>
-						<li>|</li>
-						<li><a href="">小米商城移动版</a></li>
-						<li>|</li>
-						<li><a href="">问题反馈</a></li>
-						<li>|</li>
-						<li><a href="">Select Region</a></li>
-						<div class="clear"></div>
+					<ul class="clearfix">
+						<%for(var i=0;i<topNav.length;i++){ %>
+							<li>
+								<a href="<%=topNav[i].link%>" 
+									<% if(topNav[i].is_opennew==2){%>target="_blank" <%}%> >
+								<%=topNav[i].title%></a>
+							</li>
+							<%if(i<topNav.length-1){%>
+								<li>|</li>
+							<%}%>
+						<%}%>
 					</ul>
 				</div>
 				<div class="right fr">

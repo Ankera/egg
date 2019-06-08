@@ -35,6 +35,17 @@ class NavService extends Service {
         return result;
     }
 
+    // 通过 位置类型来筛选 查询可用状态
+    async queryDataByPosition(position){
+        let result = await this.app.mysql.select(TABLENAME.NAV, {
+            where: {
+                position,
+                status: 1
+            }
+        });
+        return result;
+    }
+
     async getTotal(){
         let _sql = `SELECT COUNT(*) AS TOTAL FROM ${TABLENAME.GOODS}`;
         let result = await this.app.mysql.query(_sql);

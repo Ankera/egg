@@ -182,7 +182,7 @@ input[type=file]{
 
 /*商品详情*/
 
-.goods_content{
+.goods_content,.news_content{
 
     border: 1px solid #eee;
     margin-bottom: 20px;
@@ -242,7 +242,7 @@ input[type=file]{
     position: relative;
 }
 
-.goods_image_list li:hover .goods_image_delete{
+.goods_image_list li .goods_image_delete{
     width: 40px;
     height: 40px;
     background: url('../webuploader/images/x_alt.png') no-repeat center center;
@@ -250,8 +250,16 @@ input[type=file]{
     top: 0px;
     right: 0px;
     cursor: pointer;
+
+
 }
 
-.goods_image_list li .color_list{   
+
+
+
+.goods_image_list li .color_list{
+
+    
     margin-top:20px;
+
 }
