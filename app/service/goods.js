@@ -77,6 +77,37 @@ class GoodsService extends Service {
         let result = await this.app.mysql.query(_sql);
         return result;
     }
+
+    /**
+     * 通过商品类型来查询
+     * @param {*} cate_id 大类商品ID
+     * @param {*} obj 对象, 什么都不传, 则查询所有
+     *            {
+     *              is_best: 1,
+     *              is_news: 1,
+     *              is_hot: 1
+     *            }
+     * @param {*} number 返回的数量
+     */
+    async queryRelationGoodsCateId(cate_id, obj, number){
+        let _sql = `SELECT * FROM ${TABLENAME.GOODS} WHERE 1 `;
+        if(typeof obj == "object"){
+            if(obj.is_best == 1){
+                _sql += ` AND is_best = 1 `
+            }
+            if(obj.is_news == 1){
+                _sql += ` AND is_news = 1 `
+            }
+            if(obj.is_hot == 1){
+                _sql += ` AND is_hot = 1 `
+            }
+        }
+        _sql += ` AND cate_id IN(
+            SELECT id FROM goods_cate WHERE pid = ${cate_id}
+        ) OR cate_id = ${cate_id} LIMIT ${number}`;
+        let result = await this.app.mysql.query(_sql);
+        return result;
+    }
 }
 
 module.exports = GoodsService;

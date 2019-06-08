@@ -28,11 +28,17 @@ class IndexController extends Controller {
                 elt.subGoods = [];
             }
         }
+        let shoujiResult = await ctx.service.goods.queryRelationGoodsCateId(1, {
+            is_best: 1,
+            is_news: 1,
+            is_hot: 1 
+        }, 8);
         await this.ctx.render('default/index', {
             topNav,
             focus,
             goodsCate: result,
-            middleNav
+            middleNav,
+            shoujiResult
         });
     }
 }

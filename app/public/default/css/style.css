@@ -235,11 +235,17 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .category_item .main .content{width: 1226px;height: 300px;}
 .category_item .main .content:nth-of-type(2){margin-top: 14px;}
 .category_item .main  .hot{width:234px;height: 300px;margin-right: 10px; margin-bottom:10px; position:relative;background: #fff;}
+
 .category_item .main  .hot:hover{ box-shadow: 0px 0px 30px #ccc;}
 /* 
 .category_item .main  .hot:nth-of-type(5){margin:0;} */
 .category_item .main  .hot .xinpin span{display: block;margin:0 auto;font-size: 10px;line-height:20px;height: 20px;color:#fff;width: 65px;background: #83c44e;text-align: center;}
-.category_item .main  .hot .tu a img{margin:10px 42px 20px 42px;}
+.category_item .main  .hot .tu a img{
+	
+	margin:10px 42px 20px 42px;
+
+	max-width: 180px
+}
 .category_item .main  .hot .miaoshu{width: 234px;height: 25px;line-height: 25px;text-align: center;overflow: hidden;}
 .category_item .main  .hot .miaoshu a{color:#000;font-size: 14px;}
 .category_item .main  .hot .jiage{color:#ff6700;font-size: 14px;text-align:center;width: 234px;height: 25px;line-height: 25px;}
@@ -265,12 +271,6 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 	float: right;
 	width:978px;
 }
-
-
-
-
-
-
 
 
 .hongmi:hover{margin-top: -2px;box-shadow: 0px 0px 15px #ccc;}

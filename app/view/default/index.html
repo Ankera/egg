@@ -169,108 +169,21 @@
 
 
 				<div class="category_item_right">
-						
-
-								<div class="hot fl">
-										<div class="xinpin"><span>新品</span></div>
-										<div class="tu"><a href=""><img src="/public/default/image/peijian2.jpg"></a></div>
-										<div class="miaoshu"><a href="">小米6 硅胶保护套</a></div>
-										<div class="jiage">49元</div>
-										<div class="pingjia">372人评价</div>
-										<div class="piao">
-											<a href="">
-												<span>发货速度很快！很配小米6！</span>
-												<span>来至于mi狼牙的评价</span>
-											</a>
-										</div>
+					<%for(var i=0;i<shoujiResult.length;i++){ %>
+						<div class="hot fl">
+							<div class="xinpin"><span>新品</span></div>
+							<div class="tu"><a href=""><img src="<%=shoujiResult[i].goods_img%>"></a></div>
+							<div class="miaoshu"><a href="#"><%=shoujiResult[i].title%></a></div>
+							<div class="jiage"><%=shoujiResult[i].shop_price%>元</div>
+							<!-- <div class="pingjia">372人评价</div> -->
+							<%if(shoujiResult[i].sub_title){%>
+								<div class="piao">
+									<span><%=shoujiResult[i].sub_title%></span>
 								</div>
-								<div class="hot fl">
-										<div class="xinpin"><span>新品</span></div>
-										<div class="tu"><a href=""><img src="/public/default/image/peijian2.jpg"></a></div>
-										<div class="miaoshu"><a href="">小米6 硅胶保护套</a></div>
-										<div class="jiage">49元</div>
-										<div class="pingjia">372人评价</div>
-										<div class="piao">
-											<a href="">
-												<span>发货速度很快！很配小米6！</span>
-												<span>来至于mi狼牙的评价</span>
-											</a>
-										</div>
-								</div>
-								<div class="hot fl">
-										<div class="xinpin"><span>新品</span></div>
-										<div class="tu"><a href=""><img src="/public/default/image/peijian2.jpg"></a></div>
-										<div class="miaoshu"><a href="">小米6 硅胶保护套</a></div>
-										<div class="jiage">49元</div>
-										<div class="pingjia">372人评价</div>
-										<div class="piao">
-											<a href="">
-												<span>发货速度很快！很配小米6！</span>
-												<span>来至于mi狼牙的评价</span>
-											</a>
-										</div>
-								</div>
-								<div class="hot fl">
-										<div class="xinpin"><span>新品</span></div>
-										<div class="tu"><a href=""><img src="/public/default/image/peijian2.jpg"></a></div>
-										<div class="miaoshu"><a href="">小米6 硅胶保护套</a></div>
-										<div class="jiage">49元</div>
-										<div class="pingjia">372人评价</div>
-										<div class="piao">
-											<a href="">
-												<span>发货速度很快！很配小米6！</span>
-												<span>来至于mi狼牙的评价</span>
-											</a>
-										</div>
-								</div>
-	
-								<div class="hot fl">
-									<div class="xinpin"><span style="background:#fff"></span></div>
-									<div class="tu"><a href=""><img src="/public/default/image/peijian3.jpg"></a></div>
-									<div class="miaoshu"><a href="">小米手机4c 小米4c 智能</a></div>
-									<div class="jiage">29元</div>
-									<div class="pingjia">372人评价</div>
-								</div>
-								
-								<div class="hot fl">
-										<div class="xinpin"><span style="background:#fff"></span></div>
-										<div class="tu"><a href=""><img src="/public/default/image/peijian3.jpg"></a></div>
-										<div class="miaoshu"><a href="">小米手机4c 小米4c 智能</a></div>
-										<div class="jiage">29元</div>
-										<div class="pingjia">372人评价</div>
-									</div>
-								<div class="hot fl">
-									<div class="xinpin"><span style="background:red">享6折</span></div>
-									<div class="tu"><a href=""><img src="/public/default/image/peijian4.jpg"></a></div>
-									<div class="miaoshu"><a href="">红米NOTE 4X 红米note4X</a></div>
-									<div class="jiage">19元</div>
-									<div class="pingjia">372人评价</div>
-									<div class="piao">
-										<a href="">
-											<span>发货速度很快！很配小米6！</span>
-											<span>来至于mi狼牙的评价</span>
-										</a>
-									</div>
-								</div>
-								<div class="hot fl">
-									<div class="xinpin"><span style="background:#fff"></span></div>
-									<div class="tu"><a href=""><img src="/public/default/image/peijian5.jpg"></a></div>
-									<div class="miaoshu"><a href="">小米支架式自拍杆</a></div>
-									<div class="jiage">89元</div>
-									<div class="pingjia">372人评价</div>
-									<div class="piao">
-										<a href="">
-											<span>发货速度很快！很配小米6！</span>
-											<span>来至于mi狼牙的评价</span>
-										</a>
-									</div>
-								</div>
-
-						
-							
+							<%}%>
+						</div>
+					<%} %>
 				</div>
-			
-			
 			</div>
 		</div>
 
