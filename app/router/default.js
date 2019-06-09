@@ -12,6 +12,7 @@ module.exports = app => {
     router.get('/plist', initMiddle, controller.default.product.list);
     router.get('/pinfo', initMiddle, controller.default.product.info);
     router.get('/cart', initMiddle, controller.default.flow.cart);
+    router.get('/api/image/getImagelist', controller.default.product.getImagelist);
 
     //用户中心
     router.get('/login', initMiddle, controller.default.user.login);

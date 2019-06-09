@@ -25,13 +25,23 @@ class Goods_imageService extends Service {
         return result;
     }
 
-    // 通过ID来查询
-    async getSingleDataByGoodsId(goods_id) {
+    /**
+     * 通过ID来查询
+     * @param {*} goods_id 
+     * @param {*} color_id 颜色值 color_id， 没有传，则查询所有
+     * @param {*} number 查询多少个，默认null，查询所有
+     */
+    async getSingleDataByGoodsId(goods_id, color_id = "", number = null) {
+        let _obj = {
+            goods_id,
+            is_delete: 1
+        }
+        if(color_id){
+            _obj.color_id = color_id;
+        }
         let result = await this.app.mysql.select(TABLENAME.GOODS_IMAGE, {
-            where: {
-                goods_id,
-                is_delete: 1
-            }
+            where: _obj,
+            limit: number
         });
         return result;
     }

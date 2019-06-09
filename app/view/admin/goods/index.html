@@ -25,7 +25,7 @@
                         <table class="table table-bordered">
                             <thead>                                   
                             <tr class="th">
-                                <th>编号</th>
+                                <th>编号ID</th>
                                 <th>商品名称</th>
                                 <th>货号</th>
                                 <th>价格</th>  
@@ -44,7 +44,8 @@
                                  
                                 <%for(let i=0;i<list.length;i++){%>
                                     <tr>
-                                        <th><%=(i+1)+(page-1)*pageSize%></th>
+                                        <!-- <th><%=(i+1)+(page-1)*pageSize%></th> -->
+                                        <td><%=list[i].id%></td>
                                         <td><%=list[i].title%></td>
                                         <td><%=list[i].goods_sn%></td>
                                         <td><span onclick="app.editGoodsCommon(this, 1, '<%=list[i].id%>')"><%=list[i].shop_price%></span></td>

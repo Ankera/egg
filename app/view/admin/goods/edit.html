@@ -72,7 +72,7 @@
                                         </li>
                                         <li> <span> 商品图片:</span> 
                                             <input type="file" name="_file_focus_img" onchange="app.uploadFile(this, '<%=csrf%>')"/>
-                                            <input type="hidden" name="goods_img" value="" id="_oss_upload_image_hidden"/>
+                                            <input type="hidden" name="goods_img" value="<%=goods.goods_img%>" id="_oss_upload_image_hidden"/>
                                         <br>
 
                                         　　　　 <img class="pic" src="<%=goods.goods_img%>" id="_oss_upload_image"/>
@@ -171,7 +171,7 @@
                                 
  
                                 <ul class="form_input">
-
+                                        <li><span>友情提示:　</span><i>textarea文本输入框支持markdown语法</i></li>
                                         <li> <span>商品类型:　</span>
                                             
                                             <select name="goods_type_id" id="goods_type_id">

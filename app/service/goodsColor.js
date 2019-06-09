@@ -45,6 +45,13 @@ class GoodsColorService extends Service {
         });
         return result;
     }
+
+    // 通过多个 id来查询
+    async queryDataByBatchId(batch_id) {
+        let _sql = `SELECT * FROM ${TABLENAME.GOODS_COLOR} WHERE id IN(${batch_id})`;
+        let result = await this.app.mysql.query(_sql);
+        return result;
+    }
 }
 
 module.exports = GoodsColorService;
