@@ -70,7 +70,7 @@
 				<div class="xzbb ml20 mt10 clearfix" id="color_list">
 					
 						<%for(let i=0;i<goodsColor.length;i++){%>
-						<div class="banben fl" goods_id="<%=productInfo.id%>" goods_color="<%=goodsColor[i].id%>">
+						<div class="banben fl <%if(i==0){%>active <%}%>" goods_id="<%=productInfo.id%>" color_id="<%=goodsColor[i].id%>">
 							<a>
 								<span class="yuandian" style="background:<%=goodsColor[i].color_value%>"></span>
 								<span class="yanse"><%=goodsColor[i].color_name%></span>
@@ -84,14 +84,13 @@
 			<%}%>
 			<div class="xqxq mt20 ml20 clear">
 				<div class="top1 mt10">
-					<div class="left1 fl">小米6 全网通版 6GB内存 64GB 亮黑色</div>
-					<div class="right1 fr">2499.00元</div>
+					<div class="left1 fl"><%=productInfo.sub_title%></div>
 					<div class="clear"></div>
 				</div>
-				<div class="bot mt20 ft20 ftbc">总计：2499元</div>
+				<div class="bot mt20 ft20 ftbc">总计：<%=productInfo.shop_price%>元</div>
 			</div>
 			<div class="xiadan ml20 mt20">					
-					<input class="jrgwc" type="button" name="jrgwc" value="加入购物车" />
+					<input class="jrgwc" id="addCart" type="button" name="jrgwc" value="加入购物车" />
 			</div>
 		</div>
 		<div class="clear"></div>
@@ -151,12 +150,9 @@
 
 
 		<div class="c_right">
-				 	<ul class="detail_list clearfix">			
-			
-						<li class="">详情描述</li>			
-			
+				 	<ul class="detail_list clearfix">	
+						<li class="">详情描述</li>	
 						<li class="">规格参数</li>
-			
 						<li class="">用户评价</li>
 					</ul>
 			
@@ -261,4 +257,13 @@
 		</footer>
 
 	</body>
+	<script>
+		$(function(){
+			$("#addCart").click(function(){
+				let goods_id=$('#color_list .active').attr('goods_id');
+				let color_id=$('#color_list .active').attr('color_id');
+				location.href="/addCart?goods_id="+goods_id+'&color_id='+color_id;
+			})
+		})
+	</script>
 </html>
