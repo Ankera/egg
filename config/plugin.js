@@ -25,5 +25,10 @@ module.exports = {
     oss: {
         enable: true,
         package: 'egg-oss',
+    },
+
+    redis: {
+        enable: true,
+        package: 'egg-redis',
     }
 };
