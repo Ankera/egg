@@ -1,0 +1,89 @@
+<div class="banner_x center">
+    <a href="/" target="_blank"><div class="logo fl"></div></a>
+   
+    <div class="nav fl">
+        <ul class="clearfix" id="nav_list">
+            <li class="link-category"><a href="#">全部商品分类</a>
+                <div class="banner_y center">
+                    <div class="nav">				
+                        <ul>
+        
+                            <%for(var i=0;i<goodsCate.length;i++){ %>
+                                <li>
+                                    <a href="/plist?cid=<%=goodsCate[i].id%>"><%=goodsCate[i].title%></a>						
+                                    <div class="pop">
+                                            <ol class="cate_list clear">
+                                            
+                                                    <%for(var j=0;j<goodsCate[i].items.length;j++){ %>
+                                                        <li>
+                                                            <div class="xuangou_left">
+                                                                <%if(goodsCate[i].items[j].link){%>
+                                                                    <a href="<%=goodsCate[i].items[j].link%>">
+                                                                <%}else{%>
+                                                                    <a href="/plist?cid=<%=goodsCate[i].items[j].id%>">
+                                                                <%}%>
+                                                                    <div class="img fl"><img src="<%=goodsCate[i].items[j].cate_img%>" alt="<%=goodsCate[i].items[j].title%>"></div>
+                                                                    <span class="fl"><%=goodsCate[i].items[j].title%></span>															
+                                                                </a>
+                                                            </div>
+                                                            
+                                                        </li>
+                                                    <%}%>
+                                                                            
+                                            </ol>
+                                    </div>
+                                </li>
+                            <%}%>
+                        </ul>
+                    </div>
+
+                </div> 
+            
+            
+                
+            
+            </li>
+
+            <%for(var i=0;i<middleNav.length;i++){ %>						
+
+
+                <li>
+                    <a href="#" target="_blank"><%=middleNav[i].title%></a>
+
+                    <%if(middleNav[i].subGoods.length>0) {%>
+                
+                        <ol class="children-list clearfix">
+                                
+                                <%for(var j=0;j<middleNav[i].subGoods.length;j++){ %>
+                        
+                                    <li>
+                                        <a href="#">
+                                            <img src="<%=middleNav[i].subGoods[j].goods_img%>" />
+                                            <p><%=middleNav[i].subGoods[j].price%></p>
+                                        </a>
+                                    </li>		
+                                    
+                                <%}%>
+                    
+                        </ol>
+
+                    <%}%>
+                
+                </li>
+
+            <%} %>
+        </ul>
+    </div>
+    <div class="search fr">
+        <form action="" method="post">
+            <div class="text fl">
+                <input type="text" class="shuru"  placeholder="小米6&nbsp;小米MIX现货">
+            </div>
+            <div class="submit fl">
+                <input type="submit" class="sousuo" value="搜索"/>
+            </div>
+            <div class="clear"></div>
+        </form>
+        <div class="clear"></div>
+    </div>
+</div>

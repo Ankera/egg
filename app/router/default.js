@@ -6,14 +6,16 @@
  */
 module.exports = app => {
     const { router, controller } = app;
-    router.get('/', controller.default.index.index);
-    router.get('/plist', controller.default.product.list);
-    router.get('/pinfo', controller.default.product.info);
-    router.get('/cart', controller.default.flow.cart);
+    let initMiddle = app.middleware.init({}, app);
+
+    router.get('/', initMiddle, controller.default.index.index);
+    router.get('/plist', initMiddle, controller.default.product.list);
+    router.get('/pinfo', initMiddle, controller.default.product.info);
+    router.get('/cart', initMiddle, controller.default.flow.cart);
 
     //用户中心
-    router.get('/login', controller.default.user.login);
-    router.get('/register', controller.default.user.register);
-    router.get('/user', controller.default.user.welcome);
-    router.get('/user/order', controller.default.user.order);
+    router.get('/login', initMiddle, controller.default.user.login);
+    router.get('/register', initMiddle, controller.default.user.register);
+    router.get('/user', initMiddle, controller.default.user.welcome);
+    router.get('/user/order', initMiddle, controller.default.user.order);
 }

@@ -54,14 +54,18 @@
 
 					<%for(var i=0;i<goodsCate.length;i++){ %>
 						<li>
-							<a href="#"><%=goodsCate[i].title%></a>						
+							<a href="/plist?cid=<%=goodsCate[i].id%>"><%=goodsCate[i].title%></a>						
 							<div class="pop">
 									<ol class="cate_list clear">
 									
 											<%for(var j=0;j<goodsCate[i].items.length;j++){ %>
 												<li>
 													<div class="xuangou_left">
-														<a href="#">
+														<%if(goodsCate[i].items[j].link){%>
+															<a href="<%=goodsCate[i].items[j].link%>">
+														<%}else{%>
+															<a href="/plist?cid=<%=goodsCate[i].items[j].id%>">
+														<%}%>
 															<div class="img fl"><img src="<%=goodsCate[i].items[j].cate_img%>" alt="<%=goodsCate[i].items[j].title%>"></div>
 															<span class="fl"><%=goodsCate[i].items[j].title%></span>															
 														</a>

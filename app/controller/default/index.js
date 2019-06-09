@@ -4,40 +4,25 @@ const Controller = require('egg').Controller;
 
 class IndexController extends Controller {
     async index() {
-        let ctx = this.ctx,
-            topNav = await ctx.service.nav.queryDataByPosition(1),
-            focus = await ctx.service.focus.queryDataByType(1),
-            result = await ctx.service.goodsCate.getSingleDataByPid(0);
-        for (let i = 0; i < result.length; i++) {
-            let itemResults = await ctx.service.goodsCate.getSingleDataByPid(result[i].id);
-            result[i].items = itemResults;
+        let ctx = this.ctx;
+        let focus = await this.ctx.service.cache.get('index_focus');
+        if (!focus) {
+            focus = await ctx.service.focus.queryDataByType(1);
+            await this.ctx.service.cache.set('index_focus', focus);
         }
-        // 中间导航
-        let middleNav = await ctx.service.nav.queryDataByPosition(2);
-        for (let i = 0; i < middleNav.length; i++) {
-            let elt = middleNav[i];
-            if (elt.relation) {
-                try {
-                    let subResult = await ctx.service.goods.queryDataByBatchId(elt.relation);
-                    elt.subGoods = subResult;
-                } catch (error) {
-                    ctx.logger.info(error);
-                    elt.subGoods = [];
-                }
-            } else {
-                elt.subGoods = [];
-            }
+
+        let shoujiResult = await this.ctx.service.cache.get('index_shoujiResult');
+        if(!shoujiResult){
+            shoujiResult = await ctx.service.goods.queryRelationGoodsCateId(1, {
+                is_best: 1,
+                is_news: 1,
+                is_hot: 1
+            }, 8);
+            await this.ctx.service.cache.set('index_shoujiResult', shoujiResult);
         }
-        let shoujiResult = await ctx.service.goods.queryRelationGoodsCateId(1, {
-            is_best: 1,
-            is_news: 1,
-            is_hot: 1 
-        }, 8);
-        await this.ctx.render('default/index', {
-            topNav,
+  
+        await this.ctx.render('default/index.html', {
             focus,
-            goodsCate: result,
-            middleNav,
             shoujiResult
         });
     }

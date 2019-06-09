@@ -78,6 +78,17 @@ class GoodsService extends Service {
         return result;
     }
 
+    // 通过分类 cate_id 来查询对应商品
+    async queryDataByCateID(cate_id){
+        let result = await this.app.mysql.select(TABLENAME.GOODS, {
+            where: {
+                cate_id,
+                is_delete: 1
+            }
+        });
+        return result;
+    }
+
     /**
      * 通过商品类型来查询
      * @param {*} cate_id 大类商品ID
@@ -90,8 +101,8 @@ class GoodsService extends Service {
      * @param {*} number 返回的数量
      */
     async queryRelationGoodsCateId(cate_id, obj, number){
-        let _sql = `SELECT * FROM ${TABLENAME.GOODS} WHERE 1 `;
-        if(typeof obj == "object"){
+        let _sql = `SELECT * FROM ${TABLENAME.GOODS} WHERE is_delete = 1 `;
+        if(typeof obj == "object" && obj != null){
             if(obj.is_best == 1){
                 _sql += ` AND is_best = 1 `
             }
