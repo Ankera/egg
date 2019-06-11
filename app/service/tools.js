@@ -33,10 +33,16 @@ class ToolsService extends Service {
 
     async getRandomNum() {
         let random_str = '';
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             random_str += Math.floor(Math.random() * 10);
         }
         return random_str;
+    }
+
+    // 获取服务器时间
+    async getTime() {
+        let d = new Date();
+        return d.getTime();
     }
 }
 

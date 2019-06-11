@@ -27,7 +27,12 @@
 						<br>
 						
 							<div class="yzm">
-								<input type="text" id="identify_code" name="identify_code" placeholder="请输入验证码"/>
+
+									
+								<input type="hidden" id="identify_code" name="identify_code" value="<%=identify_code%>"/>
+								<input type="hidden" id="phone" name="phone" value="<%=phone%>"/>
+								<input type="hidden" id="sign" name="sign" value="<%=sign%>"/>
+								<input type="text" id="phone_code" name="phone_code" placeholder="请输入验证码"/>
 								
 								<button id="sendCode">重新发送</button>
 							</div>
@@ -63,14 +68,43 @@
 								}
 							}
 							
-							Countdown();
+							Countdown();							
 
-							
 
+							//重新发送验证码
 							$("#sendCode").click(function(){
+								Countdown();					
+								var phone=$('#phone').val();	
+								var identify_code=$('#identify_code').val();									
+								$.get('/pass/sendCode',{phone:phone,identify_code:identify_code},function(response){
+										console.log(response);							
+										if(response.success==true){
+											alert('发送验证码成功');
+										}else{
+											alert(response.msg);
+										}
+								})
 
-								Countdown();
-								alert('重新发送');
+							})
+
+
+
+							//验证验证码
+						
+
+							$("#nextStep").click(function(e){
+
+								let sign=$('#sign').val();
+								let phone_code= $('#phone_code').val();							
+
+								$.get('/pass/validatePhoneCode',{sign:sign,phone_code:phone_code},function(response){
+									if(response.success==true){
+										location.href="/register/registerStep3?sign="+sign+'&phone_code='+phone_code;
+									}else{
+										alert(response.msg);
+									}
+								})
+
 							})
 							
 						})

@@ -24,20 +24,25 @@
 						<br>
 						<br>
 
-						<form action="/user/doRegister" method="post" id="form">		
+						<form action="/pass/doRegister?_csrf=<%=csrf%>" method="post" id="form">		
 							
 							
-							<input type="hidden" name="sign" value="1111" />
-							<input type="hidden" name="identify_code"  value="2222"/>
+							<input type="hidden" name="sign" value="<%=sign%>" />
+							<input type="hidden" name="phone_code"  value="<%=phone_code%>"/>
 							<div>
-								<input class="form_input" type="text" id="password" name="password" placeholder="请输入密码"/>
+								<input class="form_input" type="password" id="password" name="password" placeholder="请输入密码"/>
 							
 							</div>
 
 							<div>
-								<input class="form_input" type="text" id="rpassword" name="rpassword" placeholder="请输入确认密码"/>
+								<input class="form_input" type="password" id="rpassword" name="rpassword" placeholder="请输入确认密码"/>
 							
 							</div>
+
+							<%if(msg){%>
+							<p style="color:red"><%=msg%></p>
+
+							<%}%>
 
 							<div class="regist_submit">
 									<input class="submit" id="nextStep" type="submit" name="submit" value="下一步" >
@@ -54,9 +59,9 @@
 				$(function(){
 					$("#form").submit(function(){
 
-						var password=$('#password').val();
+						let password=$('#password').val();
 
-						var rpassword=$('#rpassword').val();
+						let rpassword=$('#rpassword').val();
 
 
 						if(password.length<6){
@@ -74,7 +79,6 @@
 						}
 
 						return true;
-
 		
 
 					})

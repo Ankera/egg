@@ -70,11 +70,11 @@
 						}
 
 						$.get('/pass/sendCode',{phone:phone,identify_code:identify_code},function(response){						
-								if(response.success==true){
-									location.href="/register/registerStep2?sign="+response.sign+'&identify_code='+identify_code;
-								}else{
-									alert(response.msg);
-								}
+							if(response.success==true){
+								location.href="/register/registerStep2?sign="+response.sign+'&identify_code='+identify_code;
+							}else{
+								alert(response.msg);
+							}
 						})
 
 					})

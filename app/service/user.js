@@ -25,6 +25,23 @@ class UserService extends Service {
         return result;
     }
 
+    async queryDataById(id) {
+        let result = await this.app.mysql.select(TABLENAME.USER, {
+            where: {
+                id
+            }
+        });
+        return result;
+    }
+
+    async queryDataByPhone(phone) {
+        let result = await this.app.mysql.select(TABLENAME.USER, {
+            where: {
+                phone
+            }
+        });
+        return result;
+    }
 }
 
 module.exports = UserService;

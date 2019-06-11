@@ -18,7 +18,7 @@ module.exports = appInfo => {
     // add your middleware config here
     config.middleware = ['adminauth'];
     config.adminauth = { // 只有路由中有 '/admin' 才起作用
-        math: '/admin'
+        match: '/admin'
     }
 
     // add your user config here

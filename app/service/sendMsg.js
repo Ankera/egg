@@ -8,13 +8,12 @@ class SendMsgService extends Service {
     async send(mobile, code) {
         let apikey = '4ac28f1a65f35c9a5ae06ed64f9938ea';
         // 修改为您要发送的短信内容
-        let text = '【IT营】您的验证码是' + code;
+        let text = `您的验证码是${code}。如非本人操作，请忽略本短信`
         // 智能匹配模板发送https地址
         let sms_host = 'sms.yunpian.com';
 
         let send_sms_uri = '/v2/sms/single_send.json';
         // 指定模板发送接口https地址 
-
 
         send_sms(send_sms_uri, apikey, mobile, text);
 
