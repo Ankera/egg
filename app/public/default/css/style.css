@@ -29,7 +29,6 @@ a{border:none;text-decoration: none;color:#000;}
 	
 }
 
-
 /*header*/
 header{width: 100%;height: 40px;background: #333}
 header .top{width: 1226px;height: 40px;line-height: 40px;}
@@ -37,6 +36,94 @@ header .top .left ul li{float: left;font-size: 12px;color: #ccc;}
 header .top .left ul li a{display:block;padding:0 8px;font-size: 12px;font-family: Times New Roman;color: #b0b0b0;}
 header .top .left ul li a:hover{color:#fff;}
 header .top .right ul li{float: left;font-size: 12px;color: #ccc;}
+
+header .top .right ul li.userinfo{
+
+	position: relative;
+
+	width: 100px;
+	
+	height: 30px;
+
+}
+
+
+header .top .right ul li.userinfo i{
+	position: absolute;
+
+	top:12px; 
+	right: 10px;
+
+	display: block;
+	width: 6px;
+	height: 6px;
+	transform: rotate(-45deg);
+	border-left: 2px solid #b0b0b0;
+	border-bottom: 2px solid #b0b0b0;
+}
+
+header .top .right ul li.userinfo:hover{
+	background: #fff;
+
+	border:1px solid #eee;
+	border-bottom:none;
+}
+
+header .top .right ul li.userinfo:hover>a{
+
+	color:#f60;
+}
+
+header .top .right ul li.userinfo:hover i{
+	border-left: 2px solid #f60;
+	border-bottom: 2px solid #f60;
+
+}
+
+header .top .right ul li.userinfo:hover ol{
+	display: block;
+}
+
+
+header .top .right ul li.userinfo ol{
+
+	display: none;
+
+	position: absolute;
+
+	background: #fff;
+
+	top:30px;
+	left: -1px;
+	width: 100px;
+
+	border:1px solid #eee;
+	border-top:none;
+
+	padding-top: 10px;
+
+	z-index: 10000;
+}
+
+header .top .right ul li.userinfo ol li{
+
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	
+}
+header .top .right ul li.userinfo ol li a{
+
+	color: #424242;
+}
+
+header .top .right ul li.userinfo ol li a:hover{
+
+	color:#f60;
+}
+
+
 header .top .right ul li a{display:block;padding:0 8px;font-size: 12px;font-family: Times New Roman;color: #b0b0b0;}
 header .top .right ul li a:hover{color:#fff;}
 header .top .right .gouwuche a{color:#fff;}

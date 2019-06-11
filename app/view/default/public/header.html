@@ -35,11 +35,34 @@
 					<div class="gouwuche fr"><a href="">购物车</a></div>
 					<div class="fr">
 						<ul>
-							<li><a href="/login" >登录</a></li>
+							<%if(userinfo && userinfo.phone){%>
+								<li class="userinfo">
+									
+									
+									<a href="#"><%=userinfo.phone%></a>
+								
+									<i class="i"></i>
+
+									<ol>
+
+										<li><a href="#">个人中心</a></li>
+
+										<li><a href="#">喜欢</a></li>
+
+										<li><a href="/pass/loginOut">退出登录</a></li>
+									</ol>
+								
+								</li>
+
+								<li>|</li>
+
+								<li><a href="#" target="_blank">我的订单</a></li>
+							<%}else{%>
+							<li><a href="/login" target="_blank">登录</a></li>
 							<li>|</li>
-							<li><a href="/register/registerStep1" >注册</a></li>
-							<li>|</li>
-							<li><a href="">消息通知</a></li>
+							<li><a href="/register/registerStep1" target="_blank" >注册</a></li>
+						
+							<%}%>
 						</ul>
 					</div>
 					<div class="clear"></div>

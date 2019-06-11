@@ -31,12 +31,14 @@ module.exports = app => {
 
     //用户注册登录
     router.get('/login', initMiddle, controller.default.pass.login);
+    router.post('/pass/doLogin', initMiddle,controller.default.pass.doLogin);
     router.get('/register/registerStep1', initMiddle, controller.default.pass.registerStep1);
     router.get('/register/registerStep2', initMiddle, controller.default.pass.registerStep2);
     router.get('/register/registerStep3', initMiddle, controller.default.pass.registerStep3);
     router.get('/pass/sendCode', initMiddle, controller.default.pass.sendCode);
     router.get('/pass/validatePhoneCode', initMiddle, controller.default.pass.validatePhoneCode);
     router.post('/pass/doRegister', initMiddle, controller.default.pass.doRegister);
+    router.get('/pass/loginOut', initMiddle,controller.default.pass.loginOut);
     // 验证码
     router.get('/verify', initMiddle, controller.default.base.verify);
 }

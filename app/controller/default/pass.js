@@ -7,6 +7,43 @@ class PassController extends Controller {
         await this.ctx.render('default/pass/login.html');
     }
 
+    async doLogin() {
+        let ctx = this.ctx,
+            { username, password, identify_code } = ctx.request.body;
+
+        if (identify_code.toLocaleLowerCase() != ctx.session.identify_code.toLocaleLowerCase()) {
+            ctx.body = {
+                success: false,
+                msg: '输入的图形验证码不正确'
+            }
+            return;
+        } else {
+            password = await this.service.tools.md5(password);
+            let result = await ctx.service.user.queryDataByWhere({
+                username,
+                password
+            });
+            if (result.length > 0) {
+                this.service.cookies.set('userinfo', result[0]);
+                ctx.body = {
+                    success: true,
+                    msg: '登录成功'
+                }
+            } else {
+                this.ctx.body = {
+                    success: false,
+                    msg: '用户名或者密码错误'
+                }
+            }
+        }
+    }
+
+    //退出登录
+    async loginOut() {
+        this.service.cookies.set('userinfo', '');
+        this.ctx.redirect('/');
+    }
+
     //注册第一步 输入手机号
     async registerStep1() {
         await this.ctx.render('default/pass/register_step1.html');

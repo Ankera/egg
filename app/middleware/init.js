@@ -2,6 +2,9 @@ module.exports = (options, app) => {
     return async function init(ctx, next) {
 
         ctx.state.csrf=ctx.csrf;   //全局变量
+
+        // 获取用户信息
+        ctx.state.userinfo=ctx.service.cookies.get('userinfo');
         
         let topNav = await ctx.service.cache.get('index_top_nav');
         if (!topNav) {

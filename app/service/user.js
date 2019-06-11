@@ -42,6 +42,12 @@ class UserService extends Service {
         });
         return result;
     }
+
+    // 综合查询
+    async queryDataByWhere(where) {
+        let result = await this.app.mysql.select(TABLENAME.USER, where);
+        return result;
+    }
 }
 
 module.exports = UserService;
