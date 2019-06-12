@@ -31,13 +31,12 @@
 							<div class="username">
 								<div class="left fl">验证码：<input class="yanzhengma" id="identify_code" type="text" name="identify_code" placeholder="请输入验证码"/></div>
 								<div class="right fl">
-										<img  id="identify_code_img" src="/verify"  title="看不清？点击刷新" onclick="javascript:this.src='/verify?mt='+Math.random()">				
+									<img  id="identify_code_img" src="/verify"  title="看不清？点击刷新" onclick="javascript:this.src='/verify?mt='+Math.random()">				
 								</div>
 								<div class="clear"></div>
 							</div>
 						</div>
 						<div class="login_submit">
-							
 							<button class="submit" id="doLogin">立即登录</button>
 						</div>
 					</div>
@@ -47,14 +46,12 @@
 		
 
 		<script>
-				
 			$(function(){
 				$("#doLogin").click(function(e){
-
-					var username=$('#username').val();
-					var password= $('#password').val();
-					var identify_code= $('#identify_code').val();					
-					var reg =/^[\d]{11}$/;
+					let username=$('#username').val();
+					let password= $('#password').val();
+					let identify_code= $('#identify_code').val();					
+					let reg =/^[\d]{11}$/;
 					if(!reg.test(username)){
 						alert('手机号输入错误');
 						return false;
@@ -64,25 +61,21 @@
 						return false;
 					}
 
-					//ajax请求
-															
-					$.post('/pass/doLogin?_csrf=<%=csrf%>',{username:username,identify_code:identify_code,password:password},function(response){
-							if(response.success==true){
-								location.href="/";
-							}else{
-
-								$("#identify_code_img").attr('src','/verify?mt='+Math.random());
-							}						
+					//ajax请求								
+					$.post('/pass/doLogin?_csrf=<%=csrf%>',{
+						username,
+						identify_code,
+						password
+					},function(response){
+						if(response.success==true){
+							location.href="/";
+						}else{
+							$("#identify_code_img").attr('src','/verify?mt='+Math.random());
+						}						
 					})
-
-
-
-
-
 				})
-
 			})
-			</script>
+		</script>
 
 		<footer>
 			<div class="copyright">简体 | 繁体 | English | 常见问题</div>

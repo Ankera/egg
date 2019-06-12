@@ -58,7 +58,7 @@
                             str += '<div class="swiper-slide"><img src="' + result[i].img_url + '"> </div>';
                         }
                         $("#swiper-wrapper").html(str);
-                        
+
                         //改变轮播图以后重新初始化轮播图
                         that.initSwiper();
 

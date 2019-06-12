@@ -21,6 +21,7 @@
 			<div class="clear"></div>
 		</div>
 		<div class="xiantiao"></div>
+		<%if(cartList && cartList.length>0){%>
 		<div class="gwcxqbj">
 			<div class="gwcxd center">
 				<table class="table">
@@ -104,16 +105,37 @@
 				</div>
 				<div class="jiesuan fr">
 					<div class="jiesuanjiage fl">合计（不含运费）：<span id="allPrice"><%=allPrice%>元</span></div>
-					<div class="jsanniu fr"><input class="jsan" type="submit" name="jiesuan"  value="去结算"/></div>
+					<div class="jsanniu fr"><input id="checkout" class="jsan" type="submit" name="jiesuan"  value="去结算"/></div>
 					<div class="clear"></div>
 				</div>
 				<div class="clear"></div>
 			</div>
 			
 		</div>
+		<%}else{%>
+
+			<p style="color:red;text-align:center; padding:100px;">购物车空空的</p>
+  
+		<%}%>
 
   
+	<script>
+		$(function(){
 
+			$("#checkout").click(function(){
+
+				var allPrice=parseFloat($("#allPrice").html());
+
+				if(allPrice==0){
+					alert('购物车没有选中去结算的商品')
+				}else{
+					location.href="/buy/checkout";
+				}
+
+			})
+		})
+	
+	</script>
 	
 	<!-- footer -->
 	<footer class="center">

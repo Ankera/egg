@@ -17,8 +17,11 @@ class CookiesService extends Service {
             encrypt: true
         });
         if (data) {
-            return JSON.parse(data);
-
+            try {
+                return JSON.parse(data);
+            } catch (error) {
+                return data;
+            }
         }
         return null;
     }
