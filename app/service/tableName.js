@@ -17,7 +17,9 @@ const TABLENAME = {
     SETTING: "setting",
     USER: "user",
     USER_TEMP: "user_temp",
-    ADDRESS: "address"
+    ADDRESS: "address",
+    ORDER: "order",
+    ORDER_ITEM: "order_item"
 }
 
 module.exports = TABLENAME;

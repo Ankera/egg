@@ -19,7 +19,7 @@ class CartController extends Controller {
                 ctx.body = '错误404';   //404
             } else {
                 let currentData = {
-                    id: goods_id,
+                    id: goods_id, // 商品ID
                     title: goodsResult[0].title,
                     price: goodsResult[0].shop_price,
                     goods_version: goodsResult[0].goods_version,

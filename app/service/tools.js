@@ -44,6 +44,21 @@ class ToolsService extends Service {
         let d = new Date();
         return d.getTime();
     }
+
+    async getRandomNum() {
+        let random_str = '';
+        for (let i = 0; i < 4; i++) {
+            random_str += Math.floor(Math.random() * 10);
+        }
+        return random_str;
+    }
+
+    async getOrderId() {
+        //订单如何生成
+        let nowTime = await this.getTime();
+        let randomNum = await this.getRandomNum();
+        return nowTime.toString() + randomNum.toString();
+    }
 }
 
 module.exports = ToolsService;

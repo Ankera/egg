@@ -44,6 +44,16 @@ class AddressService extends Service {
         });
         return result;
     }
+
+    async getDataByDefaultAddress(uid){
+        let result = await this.app.mysql.select(TABLENAME.ADDRESS, {
+            where: {
+                default_address: 1,
+                uid
+            }
+        });
+        return result;
+    }
 }
 
 module.exports = AddressService;

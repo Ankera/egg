@@ -45,6 +45,10 @@ module.exports = app => {
 
     //去结算
     router.get('/buy/checkout', initMiddleware, userauthMiddleware, controller.default.buy.checkout);
+    //确认订单去支付
+    router.get('/buy/confirm', initMiddleware, userauthMiddleware, controller.default.buy.confirm);
+    //提交订单
+    router.post('/buy/doOrder', initMiddleware, userauthMiddleware, controller.default.buy.doOrder);
 
     // address   收货地址（api接口）
     router.post('/user/addAddress', initMiddleware, userauthMiddleware, controller.default.address.addAddress);
