@@ -4,7 +4,10 @@ const Controller = require('egg').Controller;
 
 class PassController extends Controller {
     async login() {
-        await this.ctx.render('default/pass/login.html');
+        let { returnUrl } = this.ctx.query;
+        await this.ctx.render('default/pass/login.html',{
+            returnUrl: decodeURIComponent(returnUrl) || '/'
+        });
     }
 
     async doLogin() {

@@ -8,6 +8,12 @@
 
             this.initContentTabs();
             this.initColorSelect();
+            this.initLogin();
+        },
+        initLogin: function () {
+            $("#loginButton").click(function () {
+                location.href = '/login?returnUrl=' + encodeURIComponent(location.href);
+            })
         },
         initSwiper: function () {
             new Swiper('.swiper-container', {
@@ -69,11 +75,6 @@
     }
 
     $(function () {
-
-
         app.init();
     })
-
-
-
 })($)

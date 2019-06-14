@@ -4,6 +4,7 @@ module.exports = (options, app) => {
          * 判断前台用户是否登录   如果登录可以进入 （ 去结算  用户中心）    如果没有登录直接跳转到登录
          */
         let userinfo = ctx.service.cookies.get('userinfo');
+        let prevPage = ctx.request.headers.referer;   //上一个页面的地址
         if (userinfo && userinfo.id && userinfo.phone) {
             let result = await ctx.service.user.queryDataByWhere({
                 id: userinfo.id,
@@ -12,10 +13,10 @@ module.exports = (options, app) => {
             if (result.length > 0) {
                 await next();
             } else {
-                ctx.redirect('/login');
+                ctx.redirect('/login?returnUrl=' + encodeURIComponent(prevPage));
             }
         } else {
-            ctx.redirect('/login');
+            ctx.redirect('/login?returnUrl=' + encodeURIComponent(prevPage));
         }
     }
 }

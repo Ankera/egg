@@ -17,8 +17,7 @@ class UserController extends Controller {
     }
 
     async order() {
-        this.ctx.body = "用户订单"
-
+        await this.ctx.render('default/user.html');
     }
 
     async address() {

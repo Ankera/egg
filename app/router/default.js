@@ -17,8 +17,8 @@ module.exports = app => {
     //用户中心
     // router.get('/login', initMiddleware, controller.default.user.login);
     // router.get('/register', initMiddleware, controller.default.user.register);
-    router.get('/user', initMiddleware, controller.default.user.welcome);
-    router.get('/user/order', initMiddleware, controller.default.user.order);
+    // router.get('/user', initMiddleware, controller.default.user.welcome);
+    // router.get('/user/order', initMiddleware, controller.default.user.order);
 
     // 加入购物车
     router.get('/addCart', initMiddleware, controller.default.cart.addCart);
@@ -56,4 +56,7 @@ module.exports = app => {
     router.get('/user/getOneAddressList', initMiddleware, userauthMiddleware, controller.default.address.getOneAddressList);
     router.get('/user/changeDefaultAddress', initMiddleware, userauthMiddleware, controller.default.address.changeDefaultAddress);
     router.post('/user/editAddress', initMiddleware, userauthMiddleware, controller.default.address.editAddress);
+
+    // 用户中心
+    router.get('/user/order', initMiddleware, userauthMiddleware, controller.default.user.order);
 }
