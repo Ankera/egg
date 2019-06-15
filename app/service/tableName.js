@@ -18,8 +18,8 @@ const TABLENAME = {
     USER: "user",
     USER_TEMP: "user_temp",
     ADDRESS: "address",
-    ORDER: "order",
-    ORDER_ITEM: "order_item"
+    ORDERS: "orders",
+    ORDERS_ITEM: "orders_item"
 }
 
 module.exports = TABLENAME;

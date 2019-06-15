@@ -3,14 +3,14 @@
 const Service = require('egg').Service;
 const TABLENAME = require('./tableName');
 
-class Order_itemService extends Service {
+class ORDERS_ITEMService extends Service {
     async insert(data) {
-        let result = await this.app.mysql.insert(TABLENAME.ORDER_ITEM, data);
+        let result = await this.app.mysql.insert(TABLENAME.ORDERS_ITEM, data);
         return result;
     }
 
     async update(data, id) {
-        let result = await this.app.mysql.update(TABLENAME.ORDER_ITEM, data, {
+        let result = await this.app.mysql.update(TABLENAME.ORDERS_ITEM, data, {
             where: {
                 id
             }
@@ -19,14 +19,14 @@ class Order_itemService extends Service {
     }
 
     async delete(id) {
-        let result = await this.app.mysql.delete(TABLENAME.ORDER_ITEM, {
+        let result = await this.app.mysql.delete(TABLENAME.ORDERS_ITEM, {
             id
         });
         return result;
     }
 
     async queryDataByOrderId(order_id){
-        let result = await this.app.mysql.select(TABLENAME.ORDER_ITEM, {
+        let result = await this.app.mysql.select(TABLENAME.ORDERS_ITEM, {
             where: {
                 order_id
             }
@@ -35,4 +35,4 @@ class Order_itemService extends Service {
     }
 }
 
-module.exports = Order_itemService;
+module.exports = ORDERS_ITEMService;

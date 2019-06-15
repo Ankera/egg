@@ -1,0 +1,195 @@
+<% include  ../public/header.html%>
+<!--end header -->
+
+<!-- start banner_x -->
+<% include  ../public/banner.html%>
+<!-- end banner_x -->
+
+<style>
+
+.portal-content-box {
+
+	padding: 10px;
+	font-size: 14px;
+
+	color:#666;
+}
+.portal-content-box  .box-bd{
+
+	padding: 20px;
+}
+.portal-content-box .user-card {
+    position: relative;
+    float: left;
+    width: 302px;
+    height: 160px;
+    padding-left: 180px;
+    padding-top: 40px;
+}
+.portal-content-box .action-list li {
+    position: relative;
+    padding: 6px 0;
+}
+
+.portal-content-box .user-card .username {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+    color: #616161;
+}
+
+.portal-content-box .user-card .tip {
+    margin: 0 0 10px;
+    color: #b0b0b0;
+}
+
+.portal-content-box .user-card .link {
+    font-size: 12px;
+    color: #ff6700;
+}
+.portal-content-box .user-card .avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 4px;
+    border: 1px solid #e0e0e0;
+    border-radius: 150px;
+}
+
+.portal-content-box .user-actions {
+    float: right;
+    width: 358px;
+    margin-top: 35px;
+}
+
+.portal-content-box .portal-sub {
+    border-top: 1px solid #e0e0e0;
+}
+
+.portal-content-box .info-list {
+    margin: 0;
+    padding: 60px 0 0;
+    list-style-type: none;
+    color: #757575;
+}
+.portal-content-box .info-list li {
+    position: relative;
+    float: left;
+    width: 276px;
+    height: 60px;
+    padding-left: 112px;
+    padding-top: 15px;
+    margin-left: 14px;
+    margin-bottom: 40px;
+}
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.portal-content-box .info-list img {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+}
+
+.portal-content-box .info-list h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+.portal-content-box a {
+    color: #757575;
+    text-decoration: none;
+}
+
+
+.btn {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: 158px;
+    height: 38px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #b0b0b0;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    color: #b0b0b0;
+    cursor: pointer;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+.btn-primary {
+    background: #ff6700;
+    border-color: #ff6700;
+    color: #fff;
+}
+
+.btn-small {
+    width: 118px;
+    height: 28px;
+    font-size: 12px;
+    line-height: 28px;
+}
+
+</style>
+<!-- self_info -->
+	<div class="grzxbj">
+		<div class="selfinfo center">
+		<div class="lfnav fl">
+			<% include  ./user_left.html%>
+		</div>
+		<div class="rtcont fr">
+			<div class="portal-content-box">
+
+
+                
+					<div class="box-bd">
+						<div class="portal-main clearfix">
+							<div class="user-card">
+								<h2 class="username">2152135723</h2>
+								<p class="tip">晚上好</p>
+								<a class="link" href="https://account.xiaomi.com/pass/userInfo" target="_blank" data-stat-id="30d619c492c43471" onclick="_msq.push(['trackEvent', 'f4f3444fdfa3d27a-30d619c492c43471', 'https://account.xiaomi.com/pass/userInfo', 'pcpid', '']);">修改个人信息 &gt;</a>
+								<img class="avatar" src="https://account.xiaomi.com/static/img/passport/photo.jpg" width="150" height="150" alt="2152135723">
+							</div>
+							<div class="user-actions">
+								<ul class="action-list">
+									<li>账户安全：<span class="level level-2">普通</span></li>
+																<li>绑定手机：<span class="tel">150********01</span></li>
+																
+																<li>绑定邮箱：<span class="tel"></span><a class="btn btn-small btn-primary" href="https://account.xiaomi.com/pass/userInfo" target="_blank" data-stat-id="d36648c4ef44cb77" onclick="_msq.push(['trackEvent', 'f4f3444fdfa3d27a-d36648c4ef44cb77', 'https://account.xiaomi.com/pass/userInfo', 'pcpid', '']);">绑定</a></li>
+															</ul>
+							</div>
+						</div>
+						<div class="portal-sub">
+							<ul class="info-list clearfix">
+								<li>
+									<h3>待支付的订单：<span class="num">0</span></h3>
+									<a href="//static.mi.com/order/?type=7" data-stat-id="ff48b3f50874dae7">查看待支付订单</a>
+									<img src="//s01.mifile.cn/i/user/portal-icon-1.png" alt="">
+								</li>
+								<li>
+									<h3>待收货的订单：<span class="num">0</span></h3>
+									<a href="//static.mi.com/order/?type=8" data-stat-id="f7b15ff4b8710895">查看待收货订单</a>
+									<img src="//s01.mifile.cn/i/user/portal-icon-2.png" alt="">
+								</li>								
+							</ul>
+						</div>
+					</div>
+			
+				</div>
+		</div>
+		<div class="clear"></div>
+		</div>
+	</div>
+<!-- self_info -->
+		
+		<footer class="mt20 center">			
+			<div class="mt20">小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</div>
+			<div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div> 
+			<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
+		</footer>
+	</body>
+</html>

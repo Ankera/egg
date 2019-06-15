@@ -1,0 +1,10 @@
+<div class="ddzx">用户中心</div>
+<div class="subddzx">
+    <ul>
+        <li <%if(url=='/user/welcome'){%> class="active" <%}%>><a href="/user/welcome" >欢迎页面</a></li>
+        <li <%if(url=='/user/order' || url=='/user/orderinfo'){%> class="active" <%}%>><a href="/user/order" >我的订单</a></li>
+        <li><a href="#">用户信息</a></li>
+        <li><a href="#">我的收藏</a></li>
+        <li><a href="#">我的评论</a></li>        
+    </ul>
+</div>

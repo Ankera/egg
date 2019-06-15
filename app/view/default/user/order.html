@@ -1,0 +1,153 @@
+<% include  ../public/header.html%>
+<!--end header -->
+
+<!-- start banner_x -->
+<% include  ../public/banner.html%>
+<!-- end banner_x -->
+
+
+<link rel="stylesheet" href="/public/default/css/order.css" />
+
+
+<!-- self_info -->
+	<div class="grzxbj">
+		<div class="selfinfo center">
+		<div class="lfnav fl">
+			<% include  ./user_left.html%>
+		</div>
+		<div class="rtcont fr">
+				<h1>我的订单</h1>
+
+				<div class="uc-content-box">
+
+						<div class="box-hd">
+							<div class="more clearfix">
+									<ul class="filter-list J_orderType">
+										<li class="first active"><a href="/user/order">全部有效订单</a></li>
+										<li><a href="/user/order?page=<%=page%>&order_status=0">待支付</a></li>
+										<li><a href="/user/order?page=<%=page%>&order_status=1">已支付</a></li>
+										<li><a href="/user/order?page=<%=page%>&order_status=3">待收货</a></li>
+										<li><a href="/user/order?page=<%=page%>&order_status=6">已关闭</a></li>
+									</ul>
+									<form id="J_orderSearchForm" class="search-form clearfix" action="#" method="get">
+										<input class="search-text" type="search" id="J_orderSearchKeywords" name="keywords" autocomplete="off" placeholder="输入商品名称、商品编号、订单号">
+										<input type="submit" class="search-btn iconfont" value="搜索">
+									</form>
+							</div>	
+						</div>
+						<div class="box-bd">
+								<table class="table">
+									<%if(list.length != 0){%>
+										<%for(var i=0;i<list.length;i++){%>
+											<tr>
+												<td colspan="2">
+
+														<div class="order-summary">
+														<h2>
+
+																	<%if(list[i].order_status==0){%>
+																		已下单 未支付
+																	<%}else if(list[i].order_status==1){%>
+																		已付款
+																	<%}else if(list[i].order_status==2){%>
+																		已配货
+																	<%}else if(list[i].order_status==3){%>
+																		已发货
+																	<%}else if(list[i].order_status==4){%>
+
+																		交易成功
+																	<%}else if(list[i].order_status==5){%>
+
+																		已退货
+																	<%}else if(list[i].order_status==6){%>
+
+																		无效 已取消 
+																	<%}%>
+
+
+															</h2>
+																<p>
+																<%=helper.formatTime(list[i].add_time) %>|  <%=list[i].name%>  | 订单号：<%=list[i].order_id%> |  在线支付    	实付金额：<%=list[i].all_price%>元
+																</p>
+
+														</div>												
+														
+														
+														<%for(var j=0;j<list[i].orderItems.length;j++){%>
+																<div class="order-info clearfix">
+
+																		<div class="col_pic">
+																				<img src="<%=list[i].orderItems[j].product_img%>" />
+																		</div>
+																		<div class="col_title">
+																				<p><%=list[i].orderItems[j].product_title%></p>	
+																				<p><%=list[i].orderItems[j].product_price%>元 × <%=list[i].orderItems[j].product_num%></p>																
+																			
+																		</div>
+																</div>
+														<%}%>
+												</td>
+						
+												<td>
+													<span>
+														
+														<%if(list[i].pay_status==1){%>
+															<a class="delete btn" href="/user/orderinfo?id=<%=list[i].id%>">订单详情</a>
+															<br>
+															<br>
+															<a class="delete btn" href="#">申请售后</a>
+
+														<%}else{%>
+															<a class="delete btn btn-primary" href="/buy/confirm?id=<%=list[i].id%>">去支付</a>
+
+															<br>
+															<br>
+															<a class="delete btn" href="/user/orderinfo?id=<%=list[i].id%>">订单详情</a>
+														<%}%>	
+
+													
+													
+													</span>
+												</td>
+											</tr>
+
+										<%}%>
+									<%}else{%>
+										<p style="text-align:center; padding-top:48px;">暂无该商品</p>
+									<%}%>																	
+								</table>
+
+								<div class="page_s1 fr" style="padding-bottom:16px"></div>
+						</div>
+				</div>
+			
+		</div>
+		<div class="clear"></div>
+		</div>
+	</div>
+<!-- self_info -->
+		
+		<footer class="mt20 center">			
+			<div class="mt20">小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</div>
+			<div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div> 
+			<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
+		</footer>
+	</body>
+	<link rel="stylesheet" href="/public/admin/pagination/pagination.css">
+<script type="text/javascript" charset="utf-8" src="/public/admin/pagination/pagination.js"></script>
+<script>
+    $(function(){
+        let page_s1 = createPage('.page_s1');
+        // 设置分页
+        setPage(page_s1,{
+            pageTotal: Number('<%=total%>'), // 数据总条数   
+            pageSize: Number('<%=pageSize%>'),    // 每页显示条数
+            pageCurrent: Number('<%=page%>'),  //  当前页
+            maxBtnNum: 5,   // 最多按钮个数  （最少5个）
+            change:function(page){   // 页数变化回调函数（返回当前页码）
+                window.location.href = `/user/order?page=${page}&pageSize=50&order_status='<%=order_status%>'`
+            }, 
+        })
+    })
+</script>
+</html>
