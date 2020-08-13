@@ -9,8 +9,8 @@ module.exports = {
     },
 
     oss: {
-        accessKeyId: 'LTAIgwIBiQzYaiCN',
-        accessKeySecret: 'M504nUyN5941RfBcoMINHp1YcVB2Jw',
+        accessKeyId: 'xxxxxxxxxxxxxx',
+        accessKeySecret: 'xxxxxxxxxxxxxxxxx',
         bucket: 'yyy-anker',
         endpoint: 'oss-cn-hongkong.aliyun.com',
         timeout: '60s',
